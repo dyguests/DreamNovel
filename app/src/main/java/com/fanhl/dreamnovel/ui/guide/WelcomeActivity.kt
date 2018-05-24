@@ -2,7 +2,9 @@ package com.fanhl.dreamnovel.ui.guide
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import com.fanhl.dreamnovel.R
+import com.fanhl.dreamnovel.ui.main.MainActivity
 import kotlinx.android.synthetic.main.activity_welcome.*
 
 class WelcomeActivity : AppCompatActivity() {
@@ -13,6 +15,10 @@ class WelcomeActivity : AppCompatActivity() {
 
         // Example of a call to a native method
         sample_text.text = stringFromJNI()
+
+        Handler().postDelayed({
+            MainActivity.launch(this@WelcomeActivity)
+        }, 2000)
     }
 
     /**
