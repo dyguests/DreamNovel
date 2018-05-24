@@ -20,6 +20,12 @@
             android:name=".ui.main.MainActivity"
             android:label="@string/title_activity_main">
         </activity>
+        <activity
+            android:name=".ui.read.ReadActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_read"
+            android:theme="@style/FullscreenTheme">
+        </activity>
     </application>
 
 </manifest>
