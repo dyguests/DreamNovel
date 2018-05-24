@@ -1,7 +1,8 @@
-package com.fanhl.dreamnovel
+package com.fanhl.dreamnovel.ui.guide
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.fanhl.dreamnovel.R
 import kotlinx.android.synthetic.main.activity_welcome.*
 
 class WelcomeActivity : AppCompatActivity() {
