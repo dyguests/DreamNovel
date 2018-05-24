@@ -1,5 +1,7 @@
 package com.fanhl.dreamnovel.ui.read
 
+import android.content.Context
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -130,5 +132,14 @@ class ReadActivity : AppCompatActivity() {
          * and a change of the status and navigation bar.
          */
         private val UI_ANIMATION_DELAY = 300
+
+        /**
+         * 启动ReadActivity
+         *
+         * @param context 上下文
+         */
+        fun launch(context: Context) {
+            context.startActivity(Intent(context, ReadActivity::class.java))
+        }
     }
 }

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import com.fanhl.dreamnovel.R
+import com.fanhl.dreamnovel.ui.read.ReadActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -35,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
         btn_read.setOnClickListener {
-
+            ReadActivity.launch(this@MainActivity)
         }
     }
 
