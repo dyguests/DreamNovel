@@ -4,19 +4,17 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
-import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentStatePagerAdapter
 import com.fanhl.dreamnovel.R
 import com.fanhl.dreamnovel.ui.common.BaseActivity
 import com.fanhl.dreamnovel.ui.main.fragment.DiscoveryFragment
-import com.fanhl.dreamnovel.ui.read.ReadActivity
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main2.*
 
-class MainActivity : BaseActivity() {
+class Main2Activity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main2)
         assignViews()
         initData()
     }
@@ -41,27 +39,17 @@ class MainActivity : BaseActivity() {
         })
 
 //        btn_read.setOnClickListener {
-//            ReadActivity.launch(this@MainActivity)
+//            ReadActivity.launch(this@Main2Activity)
 //        }
     }
 
     private fun initData() {
         view_pager.adapter = object : FragmentStatePagerAdapter(supportFragmentManager) {
-            override fun getItem(position: Int): Fragment {
-                return when (position) {
-                    0 -> {
-                        DiscoveryFragment.newInstance()
-                    }
-                    1 -> {
-                        DiscoveryFragment.newInstance()
-                    }
-                    2 -> {
-                        DiscoveryFragment.newInstance()
-                    }
-                    else -> {
-                        throw IndexOutOfBoundsException("adapter 越界啦")
-                    }
-                }
+            override fun getItem(position: Int) = when (position) {
+                0 -> DiscoveryFragment.newInstance()
+                1 -> DiscoveryFragment.newInstance()
+                2 -> DiscoveryFragment.newInstance()
+                else -> throw IndexOutOfBoundsException("adapter 越界啦")
             }
 
             override fun getCount() = 3
@@ -75,7 +63,7 @@ class MainActivity : BaseActivity() {
          * @param context 上下文
          */
         fun launch(context: Context) {
-            val intent = Intent(context, MainActivity::class.java)
+            val intent = Intent(context, Main2Activity::class.java)
             context.startActivity(intent)
         }
     }

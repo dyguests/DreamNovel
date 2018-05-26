@@ -18,7 +18,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.main.MainActivity"
+            android:name=".ui.main.Main2Activity"
             android:label="@string/title_activity_main" />
         <activity
             android:name=".ui.read.ReadActivity"

@@ -1,12 +1,10 @@
 package com.fanhl.dreamnovel.ui.guide
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.fanhl.dreamnovel.R
 import com.fanhl.dreamnovel.ui.common.BaseActivity
-import com.fanhl.dreamnovel.ui.main.MainActivity
-import kotlinx.android.synthetic.main.activity_welcome.*
+import com.fanhl.dreamnovel.ui.main.Main2Activity
 
 class WelcomeActivity : BaseActivity() {
 
@@ -18,7 +16,7 @@ class WelcomeActivity : BaseActivity() {
 //        sample_text.text = stringFromJNI()
 
         Handler().postDelayed({
-            MainActivity.launch(this@WelcomeActivity)
+            Main2Activity.launch(this@WelcomeActivity)
         }, 2000)
     }
 
