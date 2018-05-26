@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.os.Handler
 import com.fanhl.dreamnovel.R
 import com.fanhl.dreamnovel.ui.common.BaseActivity
-import com.fanhl.dreamnovel.ui.main.Main2Activity
+import com.fanhl.dreamnovel.ui.main.MainActivity
 
 class WelcomeActivity : BaseActivity() {
 
@@ -16,7 +16,7 @@ class WelcomeActivity : BaseActivity() {
 //        sample_text.text = stringFromJNI()
 
         Handler().postDelayed({
-            Main2Activity.launch(this@WelcomeActivity)
+            MainActivity.launch(this@WelcomeActivity)
         }, 2000)
     }
 
