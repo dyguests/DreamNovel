@@ -18,10 +18,11 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.fanhl.dreamnovel.R
+import com.fanhl.dreamnovel.ui.common.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_main.view.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     /**
      * The [android.support.v4.view.PagerAdapter] that will provide
