@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentStatePagerAdapter
 import com.fanhl.dreamnovel.R
 import com.fanhl.dreamnovel.ui.common.BaseActivity
+import com.fanhl.dreamnovel.ui.main.fragment.DiscoveryFragment
 import com.fanhl.dreamnovel.ui.read.ReadActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -47,12 +48,23 @@ class MainActivity : BaseActivity() {
     private fun initData() {
         view_pager.adapter = object : FragmentStatePagerAdapter(supportFragmentManager) {
             override fun getItem(position: Int): Fragment {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                return when (position) {
+                    0 -> {
+                        DiscoveryFragment.newInstance()
+                    }
+                    1 -> {
+                        DiscoveryFragment.newInstance()
+                    }
+                    2 -> {
+                        DiscoveryFragment.newInstance()
+                    }
+                    else -> {
+                        throw IndexOutOfBoundsException("adapter 越界啦")
+                    }
+                }
             }
 
-            override fun getCount(): Int {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
+            override fun getCount() = 3
         }
     }
 
