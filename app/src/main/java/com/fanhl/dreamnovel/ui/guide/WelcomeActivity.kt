@@ -4,10 +4,11 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.fanhl.dreamnovel.R
+import com.fanhl.dreamnovel.ui.common.BaseActivity
 import com.fanhl.dreamnovel.ui.main.MainActivity
 import kotlinx.android.synthetic.main.activity_welcome.*
 
-class WelcomeActivity : AppCompatActivity() {
+class WelcomeActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
