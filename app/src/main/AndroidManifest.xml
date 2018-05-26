@@ -19,17 +19,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.main.Main2Activity"
-            android:label="@string/title_activity_main2" />
+            android:name=".ui.main.MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.read.ReadActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_read"
             android:theme="@style/AppTheme.Fullscreen" />
-        <activity
-            android:name=".ui.main.MainActivity"
-            android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
-
 </manifest>
