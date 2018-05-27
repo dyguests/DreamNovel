@@ -7,7 +7,7 @@ import com.fanhl.dreamnovel.R
 import com.fanhl.dreamnovel.ui.common.BaseFragment
 
 class DiscoveryFragment : BaseFragment() {
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) = inflater.inflate(R.layout.fragment_discovery, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) = inflater.inflate(R.layout.fragment_discovery, container, false)!!
 
     companion object {
         fun newInstance(): DiscoveryFragment {
