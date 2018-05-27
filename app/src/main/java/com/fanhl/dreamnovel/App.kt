@@ -1,8 +1,8 @@
 package com.fanhl.dreamnovel
 
 import android.app.Application
-import com.fanhl.dreamnovel.io.DreamClient
+import com.fanhl.dreamnovel.io.ZhuishuClient
 
 class App : Application() {
-    val client by lazy { DreamClient() }
+    val zhuishuClient by lazy { ZhuishuClient() }
 }
