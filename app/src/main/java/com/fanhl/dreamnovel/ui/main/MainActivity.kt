@@ -20,6 +20,9 @@ import com.fanhl.dreamnovel.ui.common.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_main.view.*
 
+/**
+ * 主页
+ */
 class MainActivity : BaseActivity() {
     private val adapter by lazy { SectionsPagerAdapter(supportFragmentManager) }
 
@@ -40,26 +43,6 @@ class MainActivity : BaseActivity() {
 
     }
 
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        val id = item.itemId
-
-        if (id == R.id.action_settings) {
-            return true
-        }
-
-        return super.onOptionsItemSelected(item)
-    }
-
     companion object {
         /**
          * 启动activity
@@ -72,11 +55,6 @@ class MainActivity : BaseActivity() {
         }
     }
 
-
-    /**
-     * A [FragmentPagerAdapter] that returns a fragment corresponding to
-     * one of the sections/tabs/pages.
-     */
     inner class SectionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
         override fun getItem(position: Int): Fragment {
