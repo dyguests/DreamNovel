@@ -4,10 +4,10 @@
     <string name="title_dashboard" translatable="false">Dashboard</string>
     <string name="title_notifications" translatable="false">Notifications</string>
 
-    <string name="title_activity_read" translatable="false">ReadActivity</string>
+    <string name="title_activity_read" translatable="false">Read</string>
     <string name="dummy_button" translatable="false">Dummy Button</string>
     <string name="dummy_content" translatable="false">DUMMY\nCONTENT</string>
-    <string name="title_activity_main" translatable="false">MainActivity</string>
+    <string name="title_activity_main" translatable="false">Main</string>
     <string name="tab_bookshelf">Bookshelf</string>
     <string name="tab_discovery">Discovery</string>
     <string name="tab_mine">Mine</string>
