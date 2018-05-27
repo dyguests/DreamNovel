@@ -57,6 +57,6 @@ dependencies {
     // Paging
     implementation 'android.arch.paging:runtime:1.0.0'
     implementation project(':base')
-    implementation project(':io')
+    implementation project(':net')
     implementation project(':model')
 }

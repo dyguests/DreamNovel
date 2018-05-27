@@ -11,8 +11,8 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/base" />
             <option value="$PROJECT_DIR$/db" />
-            <option value="$PROJECT_DIR$/io" />
             <option value="$PROJECT_DIR$/model" />
+            <option value="$PROJECT_DIR$/net" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
