@@ -20,7 +20,15 @@ class ZhuishuClient {
     }
 }
 
+/**
+ * 追书神器Api
+ *
+ * https://juejin.im/entry/593a3fdf61ff4b006c737ca4
+ */
 interface ZhuishuService {
+    /**
+     * 获取所有分类
+     */
     @GET("/cats/lv2/statistics")
     fun getStatistics(): Flowable<Any>
 }
