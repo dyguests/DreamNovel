@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="app_name">梦小说</string>
-    <string name="tab_bookshelf" translatable="false">书架</string>
-    <string name="tab_discovery" translatable="false">发现</string>
-    <string name="tab_mine" translatable="false">我</string>
-</resources>
