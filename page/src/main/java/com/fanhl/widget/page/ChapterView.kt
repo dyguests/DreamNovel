@@ -16,6 +16,9 @@ class ChapterView(
     context: Context, @Nullable attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
 
+    private var displayWidth: Int = 0
+    private var displayHeight: Int = 0
+
     /**
      *  绘制小说内容的画笔
      */
@@ -48,14 +51,28 @@ class ChapterView(
         contentPaint.color = textColor
     }
 
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+        displayWidth = width - paddingLeft - paddingRight
+        displayHeight = height - paddingTop - paddingBottom
+    }
+
     override fun onDraw(canvas: Canvas) {
         canvas.drawColor(Color.RED)
     }
 
     /**
      * 分页
+     *
+     * 将 chapter 分成 pages
      */
     private fun pagination() {
+        val top: Float
+
+        top = -contentPaint.fontMetrics.top
+
+        var str: String? = null
+
 
     }
 }
