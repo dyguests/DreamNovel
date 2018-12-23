@@ -15,6 +15,6 @@ class PageView(
 ) : View(context, attrs, defStyleAttr) {
 
     override fun onDraw(canvas: Canvas) {
-        canvas.drawColor(Color.RED)
+        canvas.drawColor(Color.BLUE)
     }
 }
