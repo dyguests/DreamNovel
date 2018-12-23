@@ -22,6 +22,11 @@ class ChapterView(
     /**
      *  绘制小说内容的画笔
      */
+    private val titlePaint: TextPaint = TextPaint()
+
+    /**
+     *  绘制小说内容的画笔
+     */
     private val contentPaint: TextPaint = TextPaint()
 
     var chapter: Chapter? = null
@@ -31,7 +36,7 @@ class ChapterView(
             }
 
             field = value
-            pagination()
+            pagination(chapter)
         }
 
     /**
@@ -46,6 +51,9 @@ class ChapterView(
         val textColor = a.getColor(R.styleable.ChapterView_textColor, ContextCompat.getColor(context, R.color.chapter_view_text_color_default))
 
         a.recycle()
+
+        titlePaint.textSize = textSize * 18f / 14f
+        titlePaint.color = textColor
 
         contentPaint.textSize = textSize
         contentPaint.color = textColor
@@ -66,11 +74,8 @@ class ChapterView(
      *
      * 将 chapter 分成 pages
      */
-    private fun pagination() {
-        //这里存放所有分页
-        val pages = arrayListOf<Page>()
-
-
+    private fun pagination(chapter: Chapter?): ArrayList<Page>? {
+        chapter ?: return null
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -80,6 +85,57 @@ class ChapterView(
 
         var str: String? = null
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+        //这里存放所有分页
+        val pages = arrayListOf<Page>()
+        //分成分行
+        val lines = arrayListOf<String>()
+        var rHeight = displayHeight
+
+        //是否展示标题
+        var showTitle = true
+        //默认展示标题
+        var paragraph = chapter.title ?: ""
+
+        chapter.content ?: return pages
+
+        //将内容分成行
+        val strings = chapter.content.split("\n")
+
+        var i = 0
+        while (showTitle || i < strings.size) {
+            if (!showTitle) {
+                paragraph = strings[i]
+            }
+
+            i++
+
+            // 重置段落
+            if (!showTitle) {
+                paragraph = paragraph.replace("\\s".toRegex(), "")
+                // 如果只有换行符，那么就不执行
+                if (paragraph == "") continue
+//                paragraph = StringUtils.halfToFull("  $paragraph\n")//临时不需要这个逻辑
+            } else {
+                //设置 title 的顶部间距
+                rHeight -= titlePaint.textSize.toInt()
+            }
+
+
+            var wordCount = 0
+            var subStr: String? = null
+            while (paragraph.isNotEmpty()) {
+                //当前空间，是否容得下一行文字
+                rHeight -= if (showTitle) {
+                    titlePaint.textSize.toInt()
+                } else {
+                    contentPaint.textSize.toInt()
+                }
+            }
+        }
+
+        return pages
     }
 }

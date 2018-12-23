@@ -35,7 +35,10 @@ class PageTestActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_page_test)
 
-        val chapter = Chapter(content = text)
+        val chapter = Chapter(
+            title = "这是标题！！！",
+            content = text
+        )
 
         chapter_view.post {
             chapter_view.chapter = chapter
