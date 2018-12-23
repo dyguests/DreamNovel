@@ -30,6 +30,11 @@ class ChapterView(
 
         }
 
+    /**
+     * 分前章的具体分页
+     */
+    var pages = listOf<Page>()
+
     init {
 
     }
