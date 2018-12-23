@@ -67,6 +67,13 @@ class ChapterView(
      * 将 chapter 分成 pages
      */
     private fun pagination() {
+        //这里存放所有分页
+        val pages = arrayListOf<Page>()
+
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         val top: Float
 
         top = -contentPaint.fontMetrics.top

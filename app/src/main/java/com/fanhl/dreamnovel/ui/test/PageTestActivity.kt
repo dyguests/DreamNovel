@@ -39,14 +39,6 @@ class PageTestActivity : AppCompatActivity() {
 
         chapter_view.post {
             chapter_view.chapter = chapter
-            pagination()
         }
-    }
-
-    /**
-     * 分页处理
-     */
-    private fun pagination() {
-
     }
 }
