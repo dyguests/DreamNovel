@@ -1,7 +1,8 @@
-package com.fanhl.dreamnovel
+package com.fanhl.dreamnovel.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.fanhl.dreamnovel.R
 
 class MainActivity : AppCompatActivity() {
 
