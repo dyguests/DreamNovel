@@ -154,7 +154,7 @@ class ChapterView(
                     //FIXME 等会写这里
                     //FIXME 等会写这里
                     //FIXME 等会写这里
-                    //FIXME 等会写这里
+                    //FIXME 等会写这里 20181224
 
 //                    // 创建Page
 //                    val page = TxtPage()
@@ -217,6 +217,11 @@ class ChapterView(
             pages.add(page)
             //重置Lines
             lines.clear()
+
+            //FIXME 等会写这里
+            //FIXME 等会写这里
+            //FIXME 等会写这里
+            //FIXME 等会写这里 20181224
         }
 
         return pages
