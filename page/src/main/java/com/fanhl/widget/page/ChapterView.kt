@@ -207,7 +207,17 @@ class ChapterView(
             }
         }
 
-        //sjj/novel/view/reader/page/PageLoader.java:1324
+        if (lines.size != 0) {
+            //创建Page
+            val page = Page()
+            page.position = pages.size
+            page.title = chapter.title
+            page.lines = ArrayList(lines)
+            page.titleLines = titleLinesCount
+            pages.add(page)
+            //重置Lines
+            lines.clear()
+        }
 
         return pages
     }
