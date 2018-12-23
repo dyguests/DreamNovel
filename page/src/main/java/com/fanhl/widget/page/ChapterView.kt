@@ -36,7 +36,9 @@ class ChapterView(
     var pages = listOf<Page>()
 
     init {
+        val a = context.obtainStyledAttributes(attrs, R.styleable.ChapterView, defStyleAttr, R.style.Widget_Chapter_View)
 
+        a.recycle()
     }
 
     override fun onDraw(canvas: Canvas) {
