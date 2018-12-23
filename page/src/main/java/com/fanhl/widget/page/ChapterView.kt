@@ -29,6 +29,15 @@ class ChapterView(
      */
     private val contentPaint: TextPaint = TextPaint()
 
+    //标题的行间距
+    private var mTitleInterval: Int = 0
+    //行间距
+    private var mTextInterval: Int = 0
+
+    //段落距离(基于行间距的额外距离)
+    private var mTitlePara: Int = 0
+    private var mTextPara: Int = 0
+
     var chapter: Chapter? = null
         set(value) {
             if (field == value) {
@@ -57,6 +66,12 @@ class ChapterView(
 
         contentPaint.textSize = textSize
         contentPaint.color = textColor
+
+        mTitleInterval = (titlePaint.textSize / 2).toInt()
+        mTextInterval = (contentPaint.textSize / 2).toInt()
+
+        mTitlePara = titlePaint.textSize.toInt()
+        mTextPara = textSize.toInt()
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -93,7 +108,7 @@ class ChapterView(
         //分成分行
         val lines = arrayListOf<String>()
         var rHeight = displayHeight
-
+        var titleLinesCount = 0
         //是否展示标题
         var showTitle = true
         //默认展示标题
@@ -133,8 +148,66 @@ class ChapterView(
                 } else {
                     contentPaint.textSize.toInt()
                 }
+
+                // 一页已经填充满了，创建 TextPage
+                if (rHeight <= 0) {
+                    //FIXME 等会写这里
+                    //FIXME 等会写这里
+                    //FIXME 等会写这里
+                    //FIXME 等会写这里
+
+//                    // 创建Page
+//                    val page = TxtPage()
+//                    page.position = pages.size
+//                    page.title = StringUtils.convertCC(mContext, chapter.title, convertType)
+//                    page.lines = ArrayList(lines)
+//                    page.titleLines = titleLinesCount
+//                    pages.add(page)
+//                    // 重置Lines
+//                    lines.clear()
+//                    rHeight = mVisibleHeight
+//                    titleLinesCount = 0
+
+                    continue
+                }
+
+                //测量一行占用的字节数
+                wordCount = (if (showTitle) {
+                    titlePaint
+                } else {
+                    contentPaint
+                }).breakText(paragraph, true, displayWidth.toFloat(), null)
+
+                subStr = paragraph.substring(0, wordCount)
+                if (subStr != "\n") {
+                    //将一行字节，存储到lines中
+                    lines.add(subStr)
+
+                    //设置段落间距
+                    if (showTitle) {
+                        titleLinesCount += 1
+                        rHeight -= mTitleInterval
+                    } else {
+                        rHeight -= mTextInterval
+                    }
+                }
+
+                //裁剪
+                paragraph = paragraph.substring(wordCount)
+            }
+
+            //增加段落的间距
+            if (!showTitle && lines.size != 0) {
+                rHeight = rHeight - mTextPara + mTextInterval
+            }
+
+            if (showTitle) {
+                rHeight = rHeight - mTitlePara + mTitleInterval
+                showTitle = false
             }
         }
+
+        //sjj/novel/view/reader/page/PageLoader.java:1324
 
         return pages
     }
