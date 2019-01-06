@@ -29,6 +29,12 @@ class ChapterView(
      */
     private val contentPaint: TextPaint = TextPaint()
 
+    //书籍绘制区域的宽高
+    private var mVisibleWidth: Int = 0
+    private var mVisibleHeight: Int = 0
+    //应用的宽高
+    private var mDisplayWidth: Int = 0
+    private var mDisplayHeight: Int = 0
     //标题的行间距
     private var mTitleInterval: Int = 0
     //行间距
@@ -151,22 +157,17 @@ class ChapterView(
 
                 // 一页已经填充满了，创建 TextPage
                 if (rHeight <= 0) {
-                    //FIXME 等会写这里
-                    //FIXME 等会写这里
-                    //FIXME 等会写这里
-                    //FIXME 等会写这里 20181224
-
-//                    // 创建Page
-//                    val page = TxtPage()
-//                    page.position = pages.size
-//                    page.title = StringUtils.convertCC(mContext, chapter.title, convertType)
-//                    page.lines = ArrayList(lines)
-//                    page.titleLines = titleLinesCount
-//                    pages.add(page)
-//                    // 重置Lines
-//                    lines.clear()
-//                    rHeight = mVisibleHeight
-//                    titleLinesCount = 0
+                    // 创建Page
+                    val page = Page()
+                    page.position = pages.size
+                    page.title = chapter.title
+                    page.lines = ArrayList(lines)
+                    page.titleLines = titleLinesCount
+                    pages.add(page)
+                    // 重置Lines
+                    lines.clear()
+                    rHeight = mVisibleHeight
+                    titleLinesCount = 0
 
                     continue
                 }
@@ -217,11 +218,6 @@ class ChapterView(
             pages.add(page)
             //重置Lines
             lines.clear()
-
-            //FIXME 等会写这里
-            //FIXME 等会写这里
-            //FIXME 等会写这里
-            //FIXME 等会写这里 20181224
         }
 
         return pages
