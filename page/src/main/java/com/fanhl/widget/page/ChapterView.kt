@@ -13,7 +13,9 @@ import androidx.core.content.ContextCompat
  * 章节View
  */
 class ChapterView(
-    context: Context, @Nullable attrs: AttributeSet? = null, defStyleAttr: Int = 0
+    context: Context,
+    @Nullable attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
 
     private var displayWidth: Int = 0
@@ -95,7 +97,7 @@ class ChapterView(
      *
      * 将 chapter 分成 pages
      */
-    private fun pagination(chapter: Chapter?): ArrayList<Page>? {
+    fun pagination(chapter: Chapter?): List<Page>? {
         chapter ?: return null
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
