@@ -15,7 +15,9 @@ class LoginActivity : BaseActivity() {
         StatusBarUtil.setTranslucent(this)
         setContentView(R.layout.activity_login)
 
-        btn_login.onClick {  }
+        btn_login.onClick {
+
+        }
     }
 
     companion object {
