@@ -6,7 +6,7 @@
     <application>
         <activity
             android:name=".LoginActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.Immersive">
         </activity>
     </application>
 </manifest>

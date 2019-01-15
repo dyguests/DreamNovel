@@ -2,25 +2,22 @@ package com.fanhl.dreamnovel.account
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.view.View
 import com.fanhl.dreamnovel.base.BaseActivity
-import com.jaeger.library.StatusBarUtil
 
 class LoginActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        if (Build.VERSION.SDK_INT >= 21) {
-//            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-//            window.statusBarColor = Color.TRANSPARENT
-//        }
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-//        }
-        StatusBarUtil.setTranslucent(this)
+        if (Build.VERSION.SDK_INT >= 21) {
+            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        }
+//        StatusBarUtil.setTranslucent(this)
         setContentView(R.layout.activity_login)
     }
 
