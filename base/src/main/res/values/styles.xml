@@ -27,7 +27,7 @@
     </style>
 
     <style name="AppTheme.Immersive" parent="AppTheme.NoActionBar">
-        <item name="android:windowTranslucentNavigation">true</item>
+        <!--<item name="android:windowTranslucentNavigation">true</item>-->
         <item name="android:windowTranslucentStatus">true</item>
         <!-- 设置statusBarColor 为透明-->
         <item name="android:statusBarColor">@android:color/transparent</item>
@@ -36,4 +36,14 @@
     <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
         <item name="android:background">@color/black_overlay</item>
     </style>
+
+    <!-- Button 相关 -->
+
+    <style name="AppButton" parent="@style/Widget.AppCompat.Button"/>
+
+    <style name="AppButton.Colored" parent="@style/Widget.AppCompat.Button.Colored"/>
+
+    <style name="AppButton.Borderless" parent="@style/Widget.AppCompat.Button.Borderless"/>
+
+    <style name="AppButton.Borderless.Colored" parent="@style/Widget.AppCompat.Button.Borderless.Colored"/>
 </resources>

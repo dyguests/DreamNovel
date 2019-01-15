@@ -1,1 +1,1 @@
-include ':app', ':page', ':bizAccount', ':base'
+include ':app', ':page', ':bizAccount', ':base', ':bizHome'
