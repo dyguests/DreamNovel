@@ -2,11 +2,12 @@ package com.fanhl.dreamnovel.bizhome
 
 import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.fanhl.dreamnovel.base.ARouters
 import com.fanhl.dreamnovel.base.BaseActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
-@Route(path = "/home/main")
+@Route(path = ARouters.Home.MAIN)
 class MainActivity : BaseActivity() {
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
