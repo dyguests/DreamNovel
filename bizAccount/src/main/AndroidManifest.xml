@@ -9,5 +9,4 @@
             android:theme="@style/AppTheme.Immersive">
         </activity>
     </application>
-
 </manifest>
