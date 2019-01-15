@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="24dp"
+    tools:showIn="@layout/activity_login">
+
+    <EditText
+        android:id="@+id/et_value"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@null"
+        android:drawableStart="@drawable/ic_baseline_email_18dp"
+        android:drawablePadding="16dp"
+        android:ems="10"
+        android:hint="Email/Phone/Username"
+        android:inputType="textPersonName"
+        tools:ignore="Autofill"/>
+</androidx.cardview.widget.CardView>
