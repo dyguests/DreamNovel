@@ -40,7 +40,7 @@
         app:layout_constraintTop_toBottomOf="@+id/i_username"/>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_login"
         style="@style/AppButton.Colored"
         android:layout_width="0dp"
         android:layout_height="48dp"

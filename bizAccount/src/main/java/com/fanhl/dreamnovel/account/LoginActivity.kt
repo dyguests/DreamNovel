@@ -5,6 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import com.fanhl.dreamnovel.base.BaseActivity
 import com.jaeger.library.StatusBarUtil
+import kotlinx.android.synthetic.main.activity_login.*
+import org.jetbrains.anko.sdk25.coroutines.onClick
 
 class LoginActivity : BaseActivity() {
 
@@ -12,6 +14,8 @@ class LoginActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         StatusBarUtil.setTranslucent(this)
         setContentView(R.layout.activity_login)
+
+        btn_login.onClick {  }
     }
 
     companion object {
