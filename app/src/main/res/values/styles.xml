@@ -1,2 +1,6 @@
 <resources>
+
+    <style name="AppTheme.Fullscreen.Splash">
+        <item name="android:colorBackground">@color/primary</item>
+    </style>
 </resources>
