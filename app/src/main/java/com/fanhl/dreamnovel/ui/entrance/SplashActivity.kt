@@ -1,13 +1,13 @@
-package com.fanhl.dreamnovel.ui.main
+package com.fanhl.dreamnovel.ui.entrance
 
 import android.os.Bundle
 import com.fanhl.dreamnovel.R
 import com.fanhl.dreamnovel.base.BaseActivity
 
-class MainActivity : BaseActivity() {
+class SplashActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_splash)
     }
 }
