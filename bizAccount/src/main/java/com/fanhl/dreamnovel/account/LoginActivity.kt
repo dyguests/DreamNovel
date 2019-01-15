@@ -1,7 +1,5 @@
 package com.fanhl.dreamnovel.account
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
@@ -20,19 +18,7 @@ class LoginActivity : BaseActivity() {
 
         btn_login.onClick {
             // 1. 应用内简单的跳转(通过URL跳转在'进阶用法'中)
-//            ARouter.getInstance().build("/home/main").navigation()
-            ARouter.getInstance().build("/account/login").navigation()
-        }
-    }
-
-    companion object {
-        /**
-         * 启动LoginActivity
-         *
-         * @param context 上下文
-         */
-        fun launch(context: Context) {
-            context.startActivity(Intent(context, LoginActivity::class.java))
+            ARouter.getInstance().build("/home/main").navigation()
         }
     }
 }
