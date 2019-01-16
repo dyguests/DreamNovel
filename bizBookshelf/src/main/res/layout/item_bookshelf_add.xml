@@ -14,10 +14,13 @@
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_height="@dimen/bookshelf_item_height_default"
                 android:layout_width="match_parent"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:orientation="vertical">
 
             <TextView
-                    style="@style/AppButton.Borderless.Colored"
+                    android:textColor="@color/accent"
+                    android:textStyle="bold"
+                    android:gravity="center"
                     android:id="@+id/btn_add"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"

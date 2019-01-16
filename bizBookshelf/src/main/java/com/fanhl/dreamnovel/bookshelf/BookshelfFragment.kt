@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
+import com.fanhl.dreamnovel.base.util.toast
 import kotlinx.android.synthetic.main.fragment_bookshelf.*
 
 /**
@@ -17,7 +18,9 @@ import kotlinx.android.synthetic.main.fragment_bookshelf.*
 class BookshelfFragment : Fragment() {
     private val headerView by lazy {
         LayoutInflater.from(context).inflate(R.layout.item_bookshelf_add, null as ViewGroup?).apply {
-
+            setOnClickListener {
+                addBook()
+            }
         }
     }
 
@@ -34,6 +37,10 @@ class BookshelfFragment : Fragment() {
         recycler_view.adapter = adapter
 
         adapter.setNewData(List(10) { Book() })
+    }
+
+    private fun addBook() {
+        toast("addBook")
     }
 
     companion object {
