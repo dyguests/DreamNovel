@@ -9,4 +9,19 @@
         tools:showIn="@layout/activity_writing"
         tools:context=".WritingActivity">
 
+    <EditText
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:inputType="textMultiLine"
+            android:ems="10"
+            android:id="@+id/et_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:hint="@string/writing_input_hint"
+            android:gravity="start|top"
+            android:padding="@dimen/unit"
+            tools:ignore="Autofill,LabelFor"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
