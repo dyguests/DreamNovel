@@ -1,6 +1,7 @@
 package com.fanhl.dreamnovel.bizwriting
 
 import android.os.Bundle
+import android.view.MenuItem
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.fanhl.dreamnovel.base.ARouters
 import com.fanhl.dreamnovel.base.BaseActivity
@@ -14,6 +15,7 @@ class WritingActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_writing)
         setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
