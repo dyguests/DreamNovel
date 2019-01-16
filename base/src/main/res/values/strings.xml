@@ -1,2 +1,3 @@
 <resources>
+    <string name="linear_layout_manager">androidx.recyclerview.widget.LinearLayoutManager</string>
 </resources>
