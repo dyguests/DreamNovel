@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/bizHome" />
             <option value="$PROJECT_DIR$/bizWriting" />
             <option value="$PROJECT_DIR$/page" />
+            <option value="$PROJECT_DIR$/tlDatabase" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
