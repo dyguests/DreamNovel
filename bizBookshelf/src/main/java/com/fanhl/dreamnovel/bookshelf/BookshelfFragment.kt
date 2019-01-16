@@ -5,7 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.fragment_bookshelf.*
 
 /**
  * 书架
@@ -15,8 +16,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 class BookshelfFragment : Fragment() {
 //    private var listener: OnFragmentInteractionListener? = null
 
+    private val adapter by lazy { BookshelfAdapter() }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) = inflater.inflate(R.layout.fragment_bookshelf, container, false)!!
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        recycler_view.adapter = adapter
+    }
     //    // TODO: Rename method, update argument and hook method into UI event
 //    fun onButtonPressed(uri: Uri) {
 //        listener?.onFragmentInteraction(uri)
@@ -59,4 +66,19 @@ class BookshelfFragment : Fragment() {
             }
         }
     }
+}
+
+class BookshelfAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun getItemCount(): Int {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
 }
