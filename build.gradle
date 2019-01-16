@@ -32,7 +32,8 @@ subprojects {
         resolutionStrategy.eachDependency { details ->
             if (details.requested.group == 'androidx.recyclerview' && !details.requested.name.contains('multidex')) {
                 details.useVersion "1.0.0"
-                //        force 'androidx.recyclerview:recyclerview:1.0.0'
+            } else if (details.requested.group == 'androidx.legacy' && !details.requested.name.contains('multidex')) {
+                details.useVersion "1.0.0"
             }
         }
     }
