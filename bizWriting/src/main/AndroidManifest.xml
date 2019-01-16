@@ -1,2 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.fanhl.dreamnovel.bizwriting"/>
+          package="com.fanhl.dreamnovel.bizwriting">
+
+    <application>
+        <activity
+                android:name=".WritingActivity"
+                android:label="@string/title_activity_writing"
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+    </application>
+
+</manifest>

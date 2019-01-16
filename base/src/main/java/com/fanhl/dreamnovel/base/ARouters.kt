@@ -16,6 +16,10 @@ object ARouters {
     object Home {
         const val MAIN = "/home/main"
     }
+
+    object Writing {
+        const val WRITING = "/writing/writing"
+    }
 }
 
 fun String.navigation() {
