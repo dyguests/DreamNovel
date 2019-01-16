@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.fragment_bookshelf.*
  */
 class BookshelfFragment : Fragment() {
     private val headerView by lazy {
-        LayoutInflater.from(context).inflate(R.layout.item_bookshelf_diary, null as ViewGroup?).apply {
+        LayoutInflater.from(context).inflate(R.layout.item_bookshelf_add, null as ViewGroup?).apply {
 
         }
     }
