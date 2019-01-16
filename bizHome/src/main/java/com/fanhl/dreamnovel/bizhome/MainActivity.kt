@@ -29,8 +29,8 @@ class MainActivity : BaseActivity() {
 
         view_pager.addOnPageChangeListener(object : ViewPager.SimpleOnPageChangeListener() {
             private val navigationItemIds = arrayOf(
-                R.id.navigation_home,
-                R.id.navigation_dashboard,
+                R.id.navigation_square,
+                R.id.navigation_bookshelf,
                 R.id.navigation_notifications
             )
 
@@ -41,11 +41,11 @@ class MainActivity : BaseActivity() {
 
         navigation.setOnNavigationItemSelectedListener(BottomNavigationView.OnNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.navigation_home -> {
+                R.id.navigation_square -> {
                     view_pager.currentItem = 0
                     return@OnNavigationItemSelectedListener true
                 }
-                R.id.navigation_dashboard -> {
+                R.id.navigation_bookshelf -> {
                     view_pager.currentItem = 1
                     return@OnNavigationItemSelectedListener true
                 }
