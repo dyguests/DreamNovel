@@ -15,8 +15,17 @@ import kotlinx.android.synthetic.main.fragment_bookshelf.*
  * @author fanhl
  */
 class BookshelfFragment : Fragment() {
+    private val headerView by lazy {
+        LayoutInflater.from(context).inflate(R.layout.item_bookshelf_diary, null as ViewGroup?).apply {
 
-    private val adapter by lazy { BookshelfAdapter() }
+        }
+    }
+
+    private val adapter by lazy {
+        BookshelfAdapter().apply {
+            addHeaderView(headerView)
+        }
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) = inflater.inflate(R.layout.fragment_bookshelf, container, false)!!
 
