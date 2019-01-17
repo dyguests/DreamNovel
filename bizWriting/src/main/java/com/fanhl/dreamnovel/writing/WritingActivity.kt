@@ -1,4 +1,4 @@
-package com.fanhl.dreamnovel.bizwriting
+package com.fanhl.dreamnovel.writing
 
 import android.os.Bundle
 import androidx.lifecycle.MutableLiveData
@@ -6,7 +6,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.fanhl.dreamnovel.base.ARouters
 import com.fanhl.dreamnovel.base.BaseActivity
 import com.fanhl.dreamnovel.base.util.getModel
-import com.fanhl.dreamnovel.database.dao.bizwriting.ArticleDao
+import com.fanhl.dreamnovel.database.dao.writing.ArticleDao
 import com.fanhl.dreamnovel.database.entity.writing.Article
 import com.fanhl.dreamnovel.database.RoomClient
 import kotlinx.android.synthetic.main.activity_writing.*

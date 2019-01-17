@@ -1,4 +1,4 @@
-package com.fanhl.dreamnovel.database.dao.bizwriting
+package com.fanhl.dreamnovel.database.dao.writing
 
 import androidx.room.Dao
 import androidx.room.Delete

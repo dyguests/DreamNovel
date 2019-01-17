@@ -12,7 +12,7 @@ import com.fanhl.dreamnovel.base.util.getModel
 import com.fanhl.dreamnovel.base.util.observe
 import com.fanhl.dreamnovel.bookshelf.adapter.BookshelfAdapter
 import com.fanhl.dreamnovel.database.RoomClient
-import com.fanhl.dreamnovel.database.dao.bizwriting.ArticleDao
+import com.fanhl.dreamnovel.database.dao.writing.ArticleDao
 import com.fanhl.dreamnovel.database.entity.writing.Article
 import kotlinx.android.synthetic.main.fragment_bookshelf.*
 import org.jetbrains.anko.doAsync

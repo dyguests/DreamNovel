@@ -1,4 +1,4 @@
-package com.fanhl.dreamnovel.bizwriting;
+package com.fanhl.dreamnovel.writing;
 
 import org.junit.Test;
 
