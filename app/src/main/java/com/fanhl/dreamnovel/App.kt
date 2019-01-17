@@ -10,10 +10,11 @@ class App : BaseApp() {
 
     override fun onCreate() {
         super.onCreate()
-        initARouter()
 
         AppDatabase.init(this)
         toast("article count: ${AppDatabase.INSTANCE.articleDao().all}")
+
+        initARouter()
     }
 
     private fun initARouter() {
