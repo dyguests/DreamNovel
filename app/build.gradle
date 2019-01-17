@@ -43,4 +43,5 @@ dependencies {
     kapt 'com.alibaba:arouter-compiler:1.2.2'
     implementation project(':bizHome')
     implementation project(':bizWriting')
+    implementation project(path: ':tlDatabase')
 }
