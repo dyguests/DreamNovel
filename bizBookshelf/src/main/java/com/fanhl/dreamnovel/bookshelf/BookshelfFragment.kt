@@ -5,10 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.BaseViewHolder
+import androidx.lifecycle.MediatorLiveData
 import com.fanhl.dreamnovel.base.ARouters
 import com.fanhl.dreamnovel.base.navigation
+import com.fanhl.dreamnovel.base.util.getModel
+import com.fanhl.dreamnovel.base.util.observe
+import com.fanhl.dreamnovel.bookshelf.adapter.BookshelfAdapter
+import com.fanhl.dreamnovel.bookshelf.model.Book
+import com.fanhl.dreamnovel.database.entity.writing.Article
 import kotlinx.android.synthetic.main.fragment_bookshelf.*
 
 /**
@@ -20,7 +24,7 @@ class BookshelfFragment : Fragment() {
     private val headerView by lazy {
         LayoutInflater.from(context).inflate(R.layout.item_bookshelf_add, null as ViewGroup?).apply {
             setOnClickListener {
-                addBook()
+                ARouters.Writing.WRITING.navigation()
             }
         }
     }
@@ -31,28 +35,39 @@ class BookshelfFragment : Fragment() {
         }
     }
 
+    private val viewModel by lazy { getModel<ViewModel>() }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) = inflater.inflate(R.layout.fragment_bookshelf, container, false)!!
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        recycler_view.adapter = adapter
-
-        adapter.setNewData(List(10) { Book() })
+        assignViews()
+        initData()
+        refreshData()
     }
 
-    private fun addBook() {
-        ARouters.Writing.WRITING.navigation()
+    private fun assignViews() {
+        viewModel.apply {
+            articles.observe(this@BookshelfFragment) {
+
+            }
+        }
+    }
+
+    private fun initData() {
+        recycler_view.adapter = adapter
+    }
+
+    private fun refreshData() {
+        adapter.setNewData(List(10) { Book() })
     }
 
     companion object {
         fun newInstance() = BookshelfFragment()
     }
-}
 
-class BookshelfAdapter : BaseQuickAdapter<Book, BaseViewHolder>(R.layout.item_bookshelf_diary) {
-    override fun convert(helper: BaseViewHolder?, item: Book?) {
-
+    class ViewModel : androidx.lifecycle.ViewModel() {
+        val articles = MediatorLiveData<List<Article>>()
     }
 }
 
-class Book

@@ -5,8 +5,8 @@ import android.util.Log
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.fanhl.dreamnovel.bizwriting.database.dao.ArticleDao
-import com.fanhl.dreamnovel.bizwriting.database.entity.Article
+import com.fanhl.dreamnovel.database.dao.bizwriting.ArticleDao
+import com.fanhl.dreamnovel.database.entity.writing.Article
 import com.fanhl.dreamnovel.ui.entrance.SplashActivity
 
 @Database(entities = [Article::class], version = 1)

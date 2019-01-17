@@ -1,4 +1,4 @@
-package com.fanhl.dreamnovel.bizwriting.database.entity
+package com.fanhl.dreamnovel.database.entity.writing
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

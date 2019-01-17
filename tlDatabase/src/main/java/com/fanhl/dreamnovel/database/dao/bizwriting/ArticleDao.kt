@@ -1,11 +1,11 @@
-package com.fanhl.dreamnovel.bizwriting.database.dao
+package com.fanhl.dreamnovel.database.dao.bizwriting
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-import com.fanhl.dreamnovel.bizwriting.database.entity.Article
+import com.fanhl.dreamnovel.database.entity.writing.Article
 
 @Dao
 interface ArticleDao {

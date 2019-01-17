@@ -6,8 +6,8 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.fanhl.dreamnovel.base.ARouters
 import com.fanhl.dreamnovel.base.BaseActivity
 import com.fanhl.dreamnovel.base.util.getModel
-import com.fanhl.dreamnovel.bizwriting.database.dao.ArticleDao
-import com.fanhl.dreamnovel.bizwriting.database.entity.Article
+import com.fanhl.dreamnovel.database.dao.bizwriting.ArticleDao
+import com.fanhl.dreamnovel.database.entity.writing.Article
 import com.fanhl.dreamnovel.database.RoomClient
 import kotlinx.android.synthetic.main.activity_writing.*
 import org.jetbrains.anko.doAsync
