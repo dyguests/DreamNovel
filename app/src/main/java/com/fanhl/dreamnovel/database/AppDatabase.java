@@ -34,5 +34,4 @@ public abstract class AppDatabase extends RoomDatabase /*implements IAppDatabase
 //    }
 
     public abstract ArticleDao articleDao();
-
 }
