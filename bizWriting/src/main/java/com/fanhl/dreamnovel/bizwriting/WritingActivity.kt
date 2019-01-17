@@ -9,6 +9,9 @@ import com.fanhl.dreamnovel.database.RoomClient
 import kotlinx.android.synthetic.main.activity_writing.*
 import org.jetbrains.anko.doAsync
 
+/**
+ * 写日记、文章、。。。
+ */
 @Route(path = ARouters.Writing.WRITING)
 class WritingActivity : BaseActivity() {
 
