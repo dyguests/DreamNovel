@@ -16,6 +16,7 @@ import com.fanhl.dreamnovel.database.dao.bizwriting.ArticleDao
 import com.fanhl.dreamnovel.database.entity.writing.Article
 import kotlinx.android.synthetic.main.fragment_bookshelf.*
 import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
 
 /**
  * 书架
@@ -74,7 +75,9 @@ class BookshelfFragment : Fragment() {
         fun refreshData() {
             doAsync {
                 val articles = RoomClient.get<ArticleDao>().getAll()
-                this@ViewModel.articles.value = articles
+                uiThread {
+                    this@ViewModel.articles.value = articles
+                }
             }
         }
     }
