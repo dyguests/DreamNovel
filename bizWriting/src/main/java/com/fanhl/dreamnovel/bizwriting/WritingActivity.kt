@@ -4,6 +4,7 @@ import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.fanhl.dreamnovel.base.ARouters
 import com.fanhl.dreamnovel.base.BaseActivity
+import com.fanhl.dreamnovel.base.util.getModel
 import com.fanhl.dreamnovel.bizwriting.database.dao.ArticleDao
 import com.fanhl.dreamnovel.database.RoomClient
 import kotlinx.android.synthetic.main.activity_writing.*
@@ -14,6 +15,8 @@ import org.jetbrains.anko.doAsync
  */
 @Route(path = ARouters.Writing.WRITING)
 class WritingActivity : BaseActivity() {
+
+    private val viewModel by lazy { getModel<ViewModel>() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,4 +33,6 @@ class WritingActivity : BaseActivity() {
             }
         }
     }
+
+    class ViewModel : androidx.lifecycle.ViewModel()
 }
