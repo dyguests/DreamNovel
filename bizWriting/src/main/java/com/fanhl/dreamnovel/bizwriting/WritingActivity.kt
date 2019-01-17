@@ -5,7 +5,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.fanhl.dreamnovel.base.ARouters
 import com.fanhl.dreamnovel.base.BaseActivity
 import com.fanhl.dreamnovel.bizwriting.database.dao.ArticleDao
-import com.fanhl.dreamnovel.database.IAppDatabase
+import com.fanhl.dreamnovel.database.RoomClient
 import kotlinx.android.synthetic.main.activity_writing.*
 import org.jetbrains.anko.doAsync
 
@@ -20,7 +20,7 @@ class WritingActivity : BaseActivity() {
 
         fab.setOnClickListener { view ->
             doAsync {
-                val articleDao = IAppDatabase.INSTANCE.get(ArticleDao::class.java) ?: return@doAsync
+                val articleDao = RoomClient.get<ArticleDao>()
 
                 val list = articleDao.getAll()
                 list
