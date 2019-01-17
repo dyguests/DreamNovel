@@ -26,6 +26,6 @@ biz  business 业务
 wdt widget 控件
 tl tool 工具
 
-## 参考资料
+## Resources
 
 1. [alibaba/ARouter](https://github.com/alibaba/ARouter)
