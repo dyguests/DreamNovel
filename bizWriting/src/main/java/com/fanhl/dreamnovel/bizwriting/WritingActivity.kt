@@ -1,11 +1,13 @@
 package com.fanhl.dreamnovel.bizwriting
 
 import android.os.Bundle
+import androidx.lifecycle.MutableLiveData
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.fanhl.dreamnovel.base.ARouters
 import com.fanhl.dreamnovel.base.BaseActivity
 import com.fanhl.dreamnovel.base.util.getModel
 import com.fanhl.dreamnovel.bizwriting.database.dao.ArticleDao
+import com.fanhl.dreamnovel.bizwriting.database.entity.Article
 import com.fanhl.dreamnovel.database.RoomClient
 import kotlinx.android.synthetic.main.activity_writing.*
 import org.jetbrains.anko.doAsync
@@ -34,5 +36,22 @@ class WritingActivity : BaseActivity() {
         }
     }
 
-    class ViewModel : androidx.lifecycle.ViewModel()
+    override fun onBackPressed() {
+        super.onBackPressed()
+        viewModel.saveCache()
+    }
+
+    class ViewModel : androidx.lifecycle.ViewModel() {
+        val content = MutableLiveData<String>()
+
+        fun saveCache() {
+            doAsync {
+                RoomClient.get<ArticleDao>().insertAll(
+                    Article(
+                        content = content.value
+                    )
+                )
+            }
+        }
+    }
 }
