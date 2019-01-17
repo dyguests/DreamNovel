@@ -5,6 +5,7 @@ import com.fanhl.dreamnovel.base.BaseApp
 import org.jetbrains.anko.doAsync
 
 class App : BaseApp() {
+
     override fun onCreate() {
         super.onCreate()
         initARouter()
