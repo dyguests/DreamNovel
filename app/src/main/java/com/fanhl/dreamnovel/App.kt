@@ -10,9 +10,14 @@ class App : BaseApp() {
     override fun onCreate() {
         super.onCreate()
 
-        AppDatabase.init(this)
-
+        initDb()
         initARouter()
+    }
+
+    private fun initDb() {
+        doAsync {
+            AppDatabase.init(this@App)
+        }
     }
 
     private fun initARouter() {

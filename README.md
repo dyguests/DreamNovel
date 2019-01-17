@@ -6,6 +6,10 @@ PageView
 
 [lTBeL/novel](https://github.com/lTBeL/novel)
 
+## TODO
+
+之后为一堆异步初始化的东西加上回调，combineLast
+
 ## Structure
 
 main module
