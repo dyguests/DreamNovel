@@ -2,13 +2,18 @@ package com.fanhl.dreamnovel
 
 import com.alibaba.android.arouter.launcher.ARouter
 import com.fanhl.dreamnovel.base.BaseApp
+import com.fanhl.dreamnovel.database.AppDatabase
 import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.toast
 
 class App : BaseApp() {
 
     override fun onCreate() {
         super.onCreate()
         initARouter()
+
+        AppDatabase.init(this)
+        toast("article count: ${AppDatabase.INSTANCE.articleDao().all}")
     }
 
     private fun initARouter() {
