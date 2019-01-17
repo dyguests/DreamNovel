@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.MediatorLiveData
 import com.fanhl.dreamnovel.base.ARouters
+import com.fanhl.dreamnovel.base.BaseFragment
 import com.fanhl.dreamnovel.base.navigation
 import com.fanhl.dreamnovel.base.util.getModel
 import com.fanhl.dreamnovel.base.util.observe
@@ -23,7 +23,7 @@ import org.jetbrains.anko.uiThread
  *
  * @author fanhl
  */
-class BookshelfFragment : Fragment() {
+class BookshelfFragment : BaseFragment() {
     private val headerView by lazy {
         LayoutInflater.from(context).inflate(R.layout.item_bookshelf_add, null as ViewGroup?).apply {
             setOnClickListener {
