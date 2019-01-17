@@ -11,9 +11,11 @@ import com.fanhl.dreamnovel.base.navigation
 import com.fanhl.dreamnovel.base.util.getModel
 import com.fanhl.dreamnovel.base.util.observe
 import com.fanhl.dreamnovel.bookshelf.adapter.BookshelfAdapter
-import com.fanhl.dreamnovel.bookshelf.model.Book
+import com.fanhl.dreamnovel.database.RoomClient
+import com.fanhl.dreamnovel.database.dao.bizwriting.ArticleDao
 import com.fanhl.dreamnovel.database.entity.writing.Article
 import kotlinx.android.synthetic.main.fragment_bookshelf.*
+import org.jetbrains.anko.doAsync
 
 /**
  * 书架
@@ -49,7 +51,7 @@ class BookshelfFragment : Fragment() {
     private fun assignViews() {
         viewModel.apply {
             articles.observe(this@BookshelfFragment) {
-
+                adapter.setNewData(it)
             }
         }
     }
@@ -59,7 +61,7 @@ class BookshelfFragment : Fragment() {
     }
 
     private fun refreshData() {
-        adapter.setNewData(List(10) { Book() })
+        viewModel.refreshData()
     }
 
     companion object {
@@ -68,6 +70,13 @@ class BookshelfFragment : Fragment() {
 
     class ViewModel : androidx.lifecycle.ViewModel() {
         val articles = MediatorLiveData<List<Article>>()
+
+        fun refreshData() {
+            doAsync {
+                val articles = RoomClient.get<ArticleDao>().getAll()
+                this@ViewModel.articles.value = articles
+            }
+        }
     }
 }
 
