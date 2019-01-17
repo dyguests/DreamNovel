@@ -11,7 +11,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 @Database(entities = {Article.class}, version = 1)
-public abstract class AppDatabase extends RoomDatabase /*implements IAppDatabase */{
+public abstract class AppDatabase extends RoomDatabase implements IAppDatabase {
     /** TAG */
     public static final String TAG = AppDatabase.class.getSimpleName();
 
@@ -25,13 +25,13 @@ public abstract class AppDatabase extends RoomDatabase /*implements IAppDatabase
         }
     }
 
-//    @Override
-//    public <T> T get() {
-////        if (T instanceof ArticleDao) {
-////
-////        }
-//        return null;
-//    }
+    @Override
+    public <T> T get() {
+//        if (T instanceof ArticleDao) {
+//
+//        }
+        return null;
+    }
 
     public abstract ArticleDao articleDao();
 }
