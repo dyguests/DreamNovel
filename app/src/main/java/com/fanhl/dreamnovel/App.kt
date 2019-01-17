@@ -1,20 +1,16 @@
 package com.fanhl.dreamnovel
 
-import androidx.room.Room
 import com.alibaba.android.arouter.launcher.ARouter
 import com.fanhl.dreamnovel.base.BaseApp
 import com.fanhl.dreamnovel.database.AppDatabase
 import org.jetbrains.anko.doAsync
 
 class App : BaseApp() {
-    lateinit var db: AppDatabase
 
     override fun onCreate() {
         super.onCreate()
 
-        db = Room.databaseBuilder(applicationContext, AppDatabase::class.java, "database-name").build()
-//        AppDatabase.init(this)
-//        toast("article count: ${AppDatabase.INSTANCE.articleDao().all}")
+        AppDatabase.init(this)
 
         initARouter()
     }

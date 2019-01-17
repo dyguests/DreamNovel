@@ -12,18 +12,18 @@ import androidx.room.RoomDatabase;
 
 @Database(entities = {Article.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase /*implements IAppDatabase */{
-//    /** TAG */
-//    public static final String TAG = AppDatabase.class.getSimpleName();
-//
-//    public static AppDatabase INSTANCE;
-//
-//    public static void init(Context context) {
-//        if (INSTANCE == null) {
-//            INSTANCE = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "dream_novel").build();
-//        } else {
-//            Log.d(TAG, "AppDatabase already inited");
-//        }
-//    }
+    /** TAG */
+    public static final String TAG = AppDatabase.class.getSimpleName();
+
+    public static AppDatabase INSTANCE;
+
+    public static void init(Context context) {
+        if (INSTANCE == null) {
+            INSTANCE = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "dream_novel").build();
+        } else {
+            Log.d(TAG, "AppDatabase already inited");
+        }
+    }
 
 //    @Override
 //    public <T> T get() {
