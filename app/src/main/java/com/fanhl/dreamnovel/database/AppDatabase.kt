@@ -13,7 +13,10 @@ abstract class AppDatabase : RoomDatabase(), IAppDatabase {
 
     abstract fun articleDao(): ArticleDao
 
-    override fun <T> get(): T? {
+    override fun <T> get(clazz: Class<T>): T? {
+        if (clazz.isAssignableFrom(ArticleDao::class.java)) {
+            return articleDao() as? T
+        }
         //        if (T instanceof ArticleDao) {
         //
         //        }
@@ -24,14 +27,14 @@ abstract class AppDatabase : RoomDatabase(), IAppDatabase {
         /** TAG  */
         private val TAG = AppDatabase::class.java.simpleName
 
-        var INSTANCE: AppDatabase? = null
+//        var INSTANCE: AppDatabase? = null
 
         fun init(context: Context) {
-            if (INSTANCE == null) {
-                INSTANCE = Room.databaseBuilder(context.applicationContext, AppDatabase::class.java, "dream_novel").build()
-            } else {
-                Log.d(TAG, "AppDatabase already inited")
-            }
+//            if (IAppDatabase.INSTANCE == null) {
+                IAppDatabase.INSTANCE = Room.databaseBuilder(context.applicationContext, AppDatabase::class.java, "dream_novel").build()
+//            } else {
+//                Log.d(TAG, "AppDatabase already inited")
+//            }
         }
     }
 }

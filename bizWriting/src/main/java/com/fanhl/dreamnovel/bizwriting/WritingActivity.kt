@@ -1,12 +1,13 @@
 package com.fanhl.dreamnovel.bizwriting
 
 import android.os.Bundle
-import android.view.MenuItem
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.fanhl.dreamnovel.base.ARouters
 import com.fanhl.dreamnovel.base.BaseActivity
-import com.google.android.material.snackbar.Snackbar
+import com.fanhl.dreamnovel.bizwriting.database.dao.ArticleDao
+import com.fanhl.dreamnovel.database.IAppDatabase
 import kotlinx.android.synthetic.main.activity_writing.*
+import org.jetbrains.anko.doAsync
 
 @Route(path = ARouters.Writing.WRITING)
 class WritingActivity : BaseActivity() {
@@ -18,8 +19,12 @@ class WritingActivity : BaseActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+            doAsync {
+                val articleDao = IAppDatabase.INSTANCE.get(ArticleDao::class.java) ?: return@doAsync
+
+                val list = articleDao.getAll()
+                list
+            }
         }
     }
 }
