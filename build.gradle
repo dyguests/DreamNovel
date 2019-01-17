@@ -35,6 +35,14 @@ subprojects {
                 details.useVersion "1.0.0"
             } else if (details.requested.group == 'androidx.legacy' && !details.requested.name.contains('multidex')) {
                 details.useVersion "1.0.0"
+            } else if (details.requested.group == 'androidx.lifecycle:lifecycle-livedata'/* && !details.requested.name.contains('multidex')*/) {
+                details.useVersion "2.0.0"
+            } else if (details.requested.group == 'androidx.lifecycle:lifecycle-runtime'/* && !details.requested.name.contains('multidex')*/) {
+                details.useVersion "2.0.0"
+            } else if (details.requested.group == 'androidx.lifecycle:lifecycle-viewmodel'/* && !details.requested.name.contains('multidex')*/) {
+                details.useVersion "2.0.0"
+            } else if (details.requested.group == 'androidx.lifecycle:lifecycle-livedata-core'/* && !details.requested.name.contains('multidex')*/) {
+                details.useVersion "2.0.0"
             }
         }
     }
