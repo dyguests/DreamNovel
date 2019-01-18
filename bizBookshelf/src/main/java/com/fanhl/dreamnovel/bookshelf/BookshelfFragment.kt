@@ -8,15 +8,17 @@ import androidx.lifecycle.MediatorLiveData
 import com.fanhl.dreamnovel.base.ARouters
 import com.fanhl.dreamnovel.base.BaseFragment
 import com.fanhl.dreamnovel.base.navigation
+import com.fanhl.dreamnovel.base.util.BaseViewModel
 import com.fanhl.dreamnovel.base.util.getModel
 import com.fanhl.dreamnovel.base.util.observe
+import com.fanhl.dreamnovel.base.util.subscribeByNext
 import com.fanhl.dreamnovel.bookshelf.adapter.BookshelfAdapter
 import com.fanhl.dreamnovel.database.RoomClient
 import com.fanhl.dreamnovel.database.dao.writing.ArticleDao
 import com.fanhl.dreamnovel.database.entity.writing.Article
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_bookshelf.*
-import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.uiThread
 
 /**
  * 书架
@@ -59,26 +61,28 @@ class BookshelfFragment : BaseFragment() {
 
     private fun initData() {
         recycler_view.adapter = adapter
+        viewModel.initData()
     }
 
     private fun refreshData() {
-        viewModel.refreshData()
     }
 
     companion object {
         fun newInstance() = BookshelfFragment()
     }
 
-    class ViewModel : androidx.lifecycle.ViewModel() {
+    class ViewModel : BaseViewModel() {
         val articles = MediatorLiveData<List<Article>>()
 
-        fun refreshData() {
-            doAsync {
-                val articles = RoomClient.get<ArticleDao>().getAll()
-                uiThread {
-                    this@ViewModel.articles.value = articles
+        fun initData() {
+            RoomClient.get<ArticleDao>()
+                .getAll()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeByNext { it ->
+                    this@ViewModel.articles.value = it
                 }
-            }
+                .autoDispose()
         }
     }
 }
