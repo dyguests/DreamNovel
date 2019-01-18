@@ -48,4 +48,5 @@ dependencies {
     implementation 'com.alibaba:arouter-api:1.4.1'
     kapt 'com.alibaba:arouter-compiler:1.2.2'
     implementation project(':bizBookshelf')
+    implementation project(':bizSquare')
 }

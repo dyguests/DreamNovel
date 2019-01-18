@@ -7,6 +7,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.fanhl.dreamnovel.base.ARouters
 import com.fanhl.dreamnovel.base.BaseActivity
 import com.fanhl.dreamnovel.bookshelf.BookshelfFragment
+import com.fanhl.dreamnovel.square.SquareFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -15,11 +16,12 @@ class MainActivity : BaseActivity() {
     private val adapter by lazy {
         object : FragmentStatePagerAdapter(supportFragmentManager) {
             override fun getItem(position: Int) = when (position) {
-                0 -> BookshelfFragment.newInstance()
-                else -> BookshelfFragment.newInstance()
+                0 -> SquareFragment.newInstance()
+                1 -> BookshelfFragment.newInstance()
+                else -> throw IndexOutOfBoundsException("没有啦，多余的")
             }
 
-            override fun getCount() = 3
+            override fun getCount() = 2
         }
     }
 
@@ -30,8 +32,7 @@ class MainActivity : BaseActivity() {
         view_pager.addOnPageChangeListener(object : ViewPager.SimpleOnPageChangeListener() {
             private val navigationItemIds = arrayOf(
                 R.id.navigation_square,
-                R.id.navigation_bookshelf,
-                R.id.navigation_notifications
+                R.id.navigation_bookshelf
             )
 
             override fun onPageSelected(position: Int) {
@@ -49,15 +50,10 @@ class MainActivity : BaseActivity() {
                     view_pager.currentItem = 1
                     return@OnNavigationItemSelectedListener true
                 }
-                R.id.navigation_notifications -> {
-                    view_pager.currentItem = 2
-                    return@OnNavigationItemSelectedListener true
-                }
             }
             false
         })
 
         view_pager.adapter = adapter
-
     }
 }
