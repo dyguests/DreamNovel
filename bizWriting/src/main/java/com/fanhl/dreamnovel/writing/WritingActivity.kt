@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.fanhl.dreamnovel.base.ARouters
 import com.fanhl.dreamnovel.base.BaseActivity
-import com.fanhl.dreamnovel.base.util.getModel
+import com.fanhl.dreamnovel.base.util.lazyModel
 import com.fanhl.dreamnovel.database.RoomClient
 import com.fanhl.dreamnovel.database.dao.writing.ArticleDao
 import com.fanhl.dreamnovel.database.entity.writing.Article
@@ -20,7 +20,7 @@ import org.jetbrains.anko.sdk25.coroutines.textChangedListener
 @Route(path = ARouters.Writing.WRITING)
 class WritingActivity : BaseActivity() {
 
-    private val viewModel by lazy { getModel<ViewModel>() }
+    private val viewModel by lazyModel<ViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

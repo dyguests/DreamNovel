@@ -9,7 +9,7 @@ import com.fanhl.dreamnovel.base.ARouters
 import com.fanhl.dreamnovel.base.BaseFragment
 import com.fanhl.dreamnovel.base.navigation
 import com.fanhl.dreamnovel.base.util.BaseViewModel
-import com.fanhl.dreamnovel.base.util.getModel
+import com.fanhl.dreamnovel.base.util.lazyModel
 import com.fanhl.dreamnovel.base.util.observe
 import com.fanhl.dreamnovel.base.util.subscribeByNext
 import com.fanhl.dreamnovel.bookshelf.adapter.BookshelfAdapter
@@ -40,7 +40,7 @@ class BookshelfFragment : BaseFragment() {
         }
     }
 
-    private val viewModel by lazy { getModel<ViewModel>() }
+    private val viewModel by lazyModel<ViewModel>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) = inflater.inflate(R.layout.fragment_bookshelf, container, false)!!
 
