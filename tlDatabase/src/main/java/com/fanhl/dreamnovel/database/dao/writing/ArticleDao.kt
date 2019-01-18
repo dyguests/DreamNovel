@@ -13,6 +13,9 @@ interface ArticleDao {
     @Query("SELECT * FROM article")
     fun getAll(): Flowable<List<Article>>
 
+    @Query("SELECT * FROM article ORDER BY update_time DESC")
+    fun getLastests(): Flowable<List<Article>>
+
     @Insert
     fun insertAll(vararg articles: Article)
 

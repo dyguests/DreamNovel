@@ -76,7 +76,7 @@ class BookshelfFragment : BaseFragment() {
 
         fun initData() {
             RoomClient.get<ArticleDao>()
-                .getAll()
+                .getLastests()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeByNext { it ->
