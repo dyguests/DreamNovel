@@ -29,3 +29,5 @@ tl tool 工具
 ## Resources
 
 1. [alibaba/ARouter](https://github.com/alibaba/ARouter)
+
+2. [MultipleItemRvAdapter](https://blog.csdn.net/Chay_Chan/article/details/79658655)
