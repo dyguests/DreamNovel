@@ -6,10 +6,11 @@ import android.util.Log
 /**
  * 网络接口
  */
-class AppNet(private val context: Context) : IAppNet {
+class AppNet(private val context: Context) : AbstractAppNet() {
     override fun <T> get(clazz: Class<T>): T {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
+
 
     companion object {
         /** TAG  */
