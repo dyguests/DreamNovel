@@ -6,7 +6,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.fanhl.dreamnovel.base.ARouters
 import com.fanhl.dreamnovel.base.BaseActivity
 import com.fanhl.dreamnovel.base.util.lazyModel
-import com.fanhl.dreamnovel.database.RoomClient
+import com.fanhl.dreamnovel.database.DbClient
 import com.fanhl.dreamnovel.database.dao.writing.ArticleDao
 import com.fanhl.dreamnovel.database.entity.writing.Article
 import kotlinx.android.synthetic.main.activity_writing.*
@@ -53,7 +53,7 @@ class WritingActivity : BaseActivity() {
             }
 
             doAsync {
-                RoomClient.get<ArticleDao>().insertAll(
+                DbClient.get<ArticleDao>().insertAll(
                     Article(
                         content = content.value
                     )

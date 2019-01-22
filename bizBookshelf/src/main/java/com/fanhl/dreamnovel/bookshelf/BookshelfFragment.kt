@@ -13,7 +13,7 @@ import com.fanhl.dreamnovel.base.util.lazyModel
 import com.fanhl.dreamnovel.base.util.observe
 import com.fanhl.dreamnovel.base.util.subscribeByNext
 import com.fanhl.dreamnovel.bookshelf.adapter.BookshelfAdapter
-import com.fanhl.dreamnovel.database.RoomClient
+import com.fanhl.dreamnovel.database.DbClient
 import com.fanhl.dreamnovel.database.dao.writing.ArticleDao
 import com.fanhl.dreamnovel.database.entity.writing.Article
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -75,7 +75,7 @@ class BookshelfFragment : BaseFragment() {
         val articles = MediatorLiveData<List<Article>>()
 
         fun initData() {
-            RoomClient.get<ArticleDao>()
+            DbClient.get<ArticleDao>()
                 .getLastests()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
