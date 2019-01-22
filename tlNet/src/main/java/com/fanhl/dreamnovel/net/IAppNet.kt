@@ -20,7 +20,7 @@ abstract class AbstractAppNet : IAppNet {
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .build()
+            .build() ?: throw Exception("Retrofit 初始化失败")
     }
 
     companion object {

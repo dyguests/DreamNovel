@@ -2,15 +2,21 @@ package com.fanhl.dreamnovel.net
 
 import android.content.Context
 import android.util.Log
+import com.fanhl.dreamnovel.square.service.SquareService
 
 /**
  * 网络接口
  */
 class AppNet(private val context: Context) : AbstractAppNet() {
-    override fun <T> get(clazz: Class<T>): T {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    private val squareService by lazy { retrofit.create(SquareService::class.java) }
 
+    @Suppress("UNCHECKED_CAST")
+    override fun <T> get(clazz: Class<T>): T {
+        if (clazz.isAssignableFrom(SquareService::class.java)) {
+            return squareService as T
+        }
+        throw Exception("未找到对应 service")
+    }
 
     companion object {
         /** TAG  */

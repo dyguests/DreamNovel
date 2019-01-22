@@ -50,4 +50,5 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxkotlin:2.3.0'
     implementation 'androidx.room:room-rxjava2:2.1.0-alpha03'
     implementation project(':tlNet')
+    implementation project(':bizSquare')
 }
