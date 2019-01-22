@@ -16,12 +16,6 @@ class App : BaseApp() {
         initNet()
     }
 
-    private fun initDb() {
-        doAsync {
-            AppDatabase.init(this@App)
-        }
-    }
-
     private fun initARouter() {
         doAsync {
             //        // 这两行必须写在init之前，否则这些配置在init过程中将无效
@@ -36,7 +30,15 @@ class App : BaseApp() {
         }
     }
 
+    private fun initDb() {
+        doAsync {
+            AppDatabase.init(this@App)
+        }
+    }
+
     private fun initNet() {
-        AppNet.init(this@App)
+        doAsync {
+            AppNet.init(this@App)
+        }
     }
 }
