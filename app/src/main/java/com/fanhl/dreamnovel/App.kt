@@ -3,6 +3,7 @@ package com.fanhl.dreamnovel
 import com.alibaba.android.arouter.launcher.ARouter
 import com.fanhl.dreamnovel.base.BaseApp
 import com.fanhl.dreamnovel.database.AppDatabase
+import com.fanhl.dreamnovel.net.AppNet
 import org.jetbrains.anko.doAsync
 
 class App : BaseApp() {
@@ -10,8 +11,9 @@ class App : BaseApp() {
     override fun onCreate() {
         super.onCreate()
 
-        initDb()
         initARouter()
+        initDb()
+        initNet()
     }
 
     private fun initDb() {
@@ -32,5 +34,9 @@ class App : BaseApp() {
             // 尽可能早，推荐在Application中初始化
             ARouter.init(this@App)
         }
+    }
+
+    private fun initNet() {
+        AppNet.init(this@App)
     }
 }

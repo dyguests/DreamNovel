@@ -14,8 +14,6 @@ import com.fanhl.dreamnovel.ui.entrance.SplashActivity
 @Database(entities = [Article::class], version = 2)
 abstract class AppDatabase : RoomDatabase(), IAppDatabase {
 
-    abstract fun articleDao(): ArticleDao
-
     @Suppress("UNCHECKED_CAST")
     override fun <T> get(clazz: Class<T>): T {
         if (clazz.isAssignableFrom(SplashActivity::class.java)) {
@@ -25,6 +23,8 @@ abstract class AppDatabase : RoomDatabase(), IAppDatabase {
         }
         throw Exception("未找到对应 dao")
     }
+
+    abstract fun articleDao(): ArticleDao
 
     companion object {
         /** TAG  */
