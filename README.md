@@ -8,7 +8,14 @@ PageView
 
 ## TODO
 
-之后为一堆异步初始化的东西加上回调，combineLast
+- [ ] 之后为一堆异步初始化的东西加上回调，combineLast
+
+## Notice
+
+1. apply plugin: 'kotlin-kapt'
+
+    这里要使用`kotlin-kapt`，直接用自带kapt的话ARouter注解生成不了。
+    之后要换成kapt的话需要重新测一下Arouter能用不（clean后）
 
 ## Structure
 
