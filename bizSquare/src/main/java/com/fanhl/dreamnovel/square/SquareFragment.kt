@@ -45,14 +45,14 @@ class SquareFragment : BaseFragment() {
             }
             .autoDispose()
 
-        NetClient.get<SquareService>()
-            .list()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribeByNext {
-                toast("测试 list")
-            }
-            .autoDispose()
+//        NetClient.get<SquareService>()
+//            .list()
+//            .subscribeOn(Schedulers.io())
+//            .observeOn(AndroidSchedulers.mainThread())
+//            .subscribeByNext {
+//                toast("测试 list")
+//            }
+//            .autoDispose()
     }
 
     companion object {

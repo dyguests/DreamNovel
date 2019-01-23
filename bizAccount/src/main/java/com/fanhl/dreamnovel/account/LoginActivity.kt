@@ -19,6 +19,7 @@ class LoginActivity : BaseActivity() {
 
         btn_login.onClick {
             ARouters.Home.MAIN.navigation()
+            finish()
         }
     }
 }
