@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.fanhl.dreamnovel.bizhome">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        package="com.fanhl.dreamnovel.bizhome">
 
     <application>
         <activity
-            android:name=".MainActivity"
-            android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme">
+                android:name=".MainActivity"
+                android:label="@string/title_activity_main"
+                android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>
 
