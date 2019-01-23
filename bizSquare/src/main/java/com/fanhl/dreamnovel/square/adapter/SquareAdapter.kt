@@ -5,6 +5,11 @@ import com.chad.library.adapter.base.MultipleItemRvAdapter
 import com.fanhl.dreamnovel.square.provider.RecommendProvider
 
 class SquareAdapter : MultipleItemRvAdapter<Any, BaseViewHolder>(null) {
+
+    init {
+        finishInitialize()
+    }
+
     override fun registerItemProvider() {
         mProviderDelegate.registerProvider(RecommendProvider())
     }
@@ -15,6 +20,6 @@ class SquareAdapter : MultipleItemRvAdapter<Any, BaseViewHolder>(null) {
     }
 
     companion object {
-         const val TYPE_RECOMMEND = 1
+        const val TYPE_RECOMMEND = 1
     }
 }

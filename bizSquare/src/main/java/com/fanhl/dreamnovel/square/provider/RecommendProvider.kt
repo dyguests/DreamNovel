@@ -11,7 +11,9 @@ class RecommendProvider : BaseItemProvider<Recommend, BaseViewHolder>() {
     override fun viewType() = SquareAdapter.TYPE_RECOMMEND
 
     override fun convert(helper: BaseViewHolder?, data: Recommend?, position: Int) {
+        helper?.apply {
 
+        }
     }
 
 }
