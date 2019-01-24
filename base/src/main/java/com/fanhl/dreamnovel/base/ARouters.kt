@@ -1,5 +1,6 @@
 package com.fanhl.dreamnovel.base
 
+import android.os.Parcelable
 import com.alibaba.android.arouter.launcher.ARouter
 
 /**
@@ -22,6 +23,14 @@ object ARouters {
     }
 }
 
-fun String.navigation() {
-    ARouter.getInstance().build(this).navigation()
+fun String.navigation(vararg extras: Pair<String, Any?>) {
+    ARouter.getInstance()
+        .build(this).apply {
+            extras.forEach {
+                if (it.second is Parcelable) {
+                    withParcelable(it.first, it.second as Parcelable)
+                }
+            }
+        }
+        .navigation()
 }

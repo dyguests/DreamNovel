@@ -37,6 +37,11 @@ class BookshelfFragment : BaseFragment() {
     private val adapter by lazy {
         BookshelfAdapter().apply {
             addHeaderView(headerView)
+            setOnItemClickListener { adapter, view, position ->
+                ARouters.Writing.WRITING.navigation(
+                    "Article" to (adapter.data[position] as? Article ?: return@setOnItemClickListener)
+                )
+            }
         }
     }
 
