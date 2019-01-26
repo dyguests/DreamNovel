@@ -15,6 +15,6 @@ data class Paragrafo(
     @ColumnInfo var content: String? = null
 ) : Parcelable {
     companion object {
-        const val TYPE_TEXT = 1
+        const val TYPE_TEXT = 0
     }
 }
