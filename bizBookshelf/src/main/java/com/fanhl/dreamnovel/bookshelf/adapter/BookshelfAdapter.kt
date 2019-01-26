@@ -16,7 +16,8 @@ class BookshelfAdapter : BaseQuickAdapter<Article, BaseViewHolder>(R.layout.item
             } ?: let {
                 tv_title.visibility = View.GONE
             }
-            tv_content.text = item?.content
+            //FIXME 之后要改的
+            tv_content.text = item?.content?.firstOrNull()?.content
         }
     }
 }

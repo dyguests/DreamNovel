@@ -14,9 +14,9 @@ import com.fanhl.dreamnovel.base.util.setTextDistinct
 import com.fanhl.dreamnovel.database.DbClient
 import com.fanhl.dreamnovel.database.dao.writing.ArticleDao
 import com.fanhl.dreamnovel.database.entity.writing.Article
+import com.fanhl.dreamnovel.database.entity.writing.Paragrafo
 import com.fanhl.dreamnovel.image.ImagePickerApi
 import com.fanhl.dreamnovel.writing.adapter.WritingAdapter
-import com.fanhl.dreamnovel.writing.model.TextWritingItem
 import kotlinx.android.synthetic.main.activity_writing.*
 import kotlinx.android.synthetic.main.content_writing.*
 import org.jetbrains.anko.doAsync
@@ -92,9 +92,9 @@ class WritingActivity : BaseActivity() {
             title.observe(this@WritingActivity) {
                 et_title.setTextDistinct(it)
             }
-//            content.observe(this@WritingActivity) {
-//                et_content.setTextDistinct(it)
-//            }
+            content.observe(this@WritingActivity) {
+                adapter.setNewData(it)
+            }
         }
     }
 
@@ -103,7 +103,7 @@ class WritingActivity : BaseActivity() {
 
         adapter.setNewData(
             listOf(
-                TextWritingItem()
+                Paragrafo()
             )
         )
     }
@@ -119,7 +119,7 @@ class WritingActivity : BaseActivity() {
         // ------------------------------------------ form表单 start ------------------------------------------
 
         val title = DistinctLiveData<String>()
-        val content = DistinctLiveData<String>()
+        val content = DistinctLiveData<List<Paragrafo>>()
 
         // ------------------------------------------ form表单 end ------------------------------------------
 
@@ -133,7 +133,7 @@ class WritingActivity : BaseActivity() {
         fun saveCache() {
             if (article.value == null
                 && title.value.isNullOrEmpty()
-                && content.value.isNullOrEmpty()
+                && content.value?.isNotEmpty() != true
             ) {
                 return
             }

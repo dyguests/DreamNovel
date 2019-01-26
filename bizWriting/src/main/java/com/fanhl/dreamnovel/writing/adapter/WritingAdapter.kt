@@ -2,11 +2,10 @@ package com.fanhl.dreamnovel.writing.adapter
 
 import com.chad.library.adapter.base.BaseViewHolder
 import com.chad.library.adapter.base.MultipleItemRvAdapter
-import com.fanhl.dreamnovel.writing.model.TextWritingItem
-import com.fanhl.dreamnovel.writing.model.WritingItem
+import com.fanhl.dreamnovel.database.entity.writing.Paragrafo
 import com.fanhl.dreamnovel.writing.provider.TextProvider
 
-class WritingAdapter : MultipleItemRvAdapter<WritingItem, BaseViewHolder>(null) {
+class WritingAdapter : MultipleItemRvAdapter<Paragrafo, BaseViewHolder>(null) {
     init {
         finishInitialize()
     }
@@ -15,7 +14,7 @@ class WritingAdapter : MultipleItemRvAdapter<WritingItem, BaseViewHolder>(null) 
         mProviderDelegate.registerProvider(TextProvider())
     }
 
-    override fun getViewType(item: WritingItem?) = if (item is TextWritingItem) {
+    override fun getViewType(item: Paragrafo?) = if (item is Paragrafo) {
         TYPE_TEXT
     } else {
         TYPE_TEXT
