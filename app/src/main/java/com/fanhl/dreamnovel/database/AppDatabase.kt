@@ -12,7 +12,7 @@ import com.fanhl.dreamnovel.database.dao.writing.ParagrafoDao
 import com.fanhl.dreamnovel.database.entity.writing.Article
 import com.fanhl.dreamnovel.database.entity.writing.Paragrafo
 
-@Database(entities = [Article::class, Paragrafo::class], version = 2)
+@Database(entities = [Article::class, Paragrafo::class], version = 3)
 abstract class AppDatabase : RoomDatabase(), IAppDatabase {
 
     @Suppress("UNCHECKED_CAST")
