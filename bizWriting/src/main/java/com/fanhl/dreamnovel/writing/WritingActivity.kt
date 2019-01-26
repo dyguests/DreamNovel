@@ -16,6 +16,7 @@ import com.fanhl.dreamnovel.database.dao.writing.ArticleDao
 import com.fanhl.dreamnovel.database.entity.writing.Article
 import com.fanhl.dreamnovel.image.ImagePickerApi
 import com.fanhl.dreamnovel.writing.adapter.WritingAdapter
+import com.fanhl.dreamnovel.writing.model.TextWritingItem
 import kotlinx.android.synthetic.main.activity_writing.*
 import kotlinx.android.synthetic.main.content_writing.*
 import org.jetbrains.anko.doAsync
@@ -28,7 +29,9 @@ import org.jetbrains.anko.sdk25.coroutines.textChangedListener
 class WritingActivity : BaseActivity() {
 
     /** contents adapter */
-    private val adapter by lazy { WritingAdapter() }
+    private val adapter by lazy {
+        WritingAdapter()
+    }
 
     private val viewModel by lazyModel<ViewModel>()
 
@@ -97,6 +100,12 @@ class WritingActivity : BaseActivity() {
 
     private fun initData() {
         viewModel.article.value = intent.getParcelableExtra("Article")
+
+        adapter.setNewData(
+            listOf(
+                TextWritingItem()
+            )
+        )
     }
 
     class ViewModel : androidx.lifecycle.ViewModel() {
@@ -147,3 +156,4 @@ class WritingActivity : BaseActivity() {
         }
     }
 }
+
