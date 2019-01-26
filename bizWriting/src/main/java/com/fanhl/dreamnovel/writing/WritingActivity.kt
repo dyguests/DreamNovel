@@ -1,6 +1,7 @@
 package com.fanhl.dreamnovel.writing
 
 import android.os.Bundle
+import android.view.Menu
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.fanhl.dreamnovel.base.ARouters
 import com.fanhl.dreamnovel.base.BaseActivity
@@ -32,6 +33,11 @@ class WritingActivity : BaseActivity() {
 
         assignViews()
         initData()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        menuInflater.inflate(R.menu.writing, menu)
+        return true
     }
 
     override fun onBackPressed() {
