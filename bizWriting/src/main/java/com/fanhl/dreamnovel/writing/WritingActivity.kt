@@ -34,6 +34,11 @@ class WritingActivity : BaseActivity() {
         initData()
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        viewModel.saveCache()
+    }
+
     private fun assignViews() {
         et_title.textChangedListener {
             onTextChanged { charSequence, start, before, count ->
@@ -58,11 +63,6 @@ class WritingActivity : BaseActivity() {
 
     private fun initData() {
         viewModel.article.value = intent.getParcelableExtra("Article")
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-        viewModel.saveCache()
     }
 
     class ViewModel : androidx.lifecycle.ViewModel() {

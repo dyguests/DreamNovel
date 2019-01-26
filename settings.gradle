@@ -1,1 +1,1 @@
-include ':app', ':page', ':bizAccount', ':base', ':bizHome', ':bizBookshelf', ':bizWriting', ':tlDatabase', ':bizSquare', ':tlNet'
+include ':app', ':page', ':bizAccount', ':base', ':bizHome', ':bizBookshelf', ':bizWriting', ':tlDatabase', ':bizSquare', ':tlNet', ':tlImagePicker'
