@@ -57,6 +57,8 @@ class BookshelfFragment : BaseFragment() {
     }
 
     private fun assignViews() {
+        swipe_refresh_layout.setOnRefreshListener { swipe_refresh_layout.post { swipe_refresh_layout.isRefreshing = false } }
+
         viewModel.apply {
             articles.observe(this@BookshelfFragment) {
                 adapter.setNewData(it)

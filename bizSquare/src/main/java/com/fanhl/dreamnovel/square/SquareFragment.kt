@@ -5,14 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.fanhl.dreamnovel.base.BaseFragment
-import com.fanhl.dreamnovel.base.util.subscribeByNext
-import com.fanhl.dreamnovel.base.util.toast
-import com.fanhl.dreamnovel.net.NetClient
 import com.fanhl.dreamnovel.square.adapter.SquareAdapter
 import com.fanhl.dreamnovel.square.provider.Recommend
-import com.fanhl.dreamnovel.square.service.SquareService
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_square.*
 
@@ -29,6 +26,7 @@ class SquareFragment : BaseFragment() {
     }
 
     private fun assignViews() {
+        swipe_refresh_layout.setOnRefreshListener { refreshData() }
         recycler_view.adapter = adapter
     }
 
@@ -40,9 +38,15 @@ class SquareFragment : BaseFragment() {
             }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribeByNext {
-                adapter.setNewData(it)
-            }
+            .subscribeBy(
+                onNext = {
+                    swipe_refresh_layout.isRefreshing = false
+                    adapter.setNewData(it)
+                },
+                onError = {
+                    swipe_refresh_layout.isRefreshing = false
+                }
+            )
             .autoDispose()
 
 //        NetClient.get<SquareService>()
