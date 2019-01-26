@@ -1,5 +1,6 @@
 <resources>
     <string name="linear_layout_manager">androidx.recyclerview.widget.LinearLayoutManager</string>
+    <string name="grid_layout_manager">androidx.recyclerview.widget.GridLayoutManager</string>
 
     <string name="large_text">GitHub - alibaba/ARouter: A framework for assisting in the renovation ... https://github.com/alibaba/ARouter ... of Android componentization (帮助 Android App 进行组件化改造的路由框架) - alibaba/ARouter. ... module, arouter-api, arouter-compiler, arouter-register, arouter-idea-plugin .... No problem! hand over control to the framework callback.</string>
 </resources>

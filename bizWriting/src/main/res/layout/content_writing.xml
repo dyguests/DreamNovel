@@ -9,19 +9,17 @@
         tools:context=".WritingActivity"
         tools:showIn="@layout/activity_writing">
 
-    <EditText
-            android:id="@+id/et_content"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@null"
-            android:ems="10"
-            android:gravity="start|top"
-            android:hint="@string/writing_content_hint"
-            android:inputType="textMultiLine"
-            android:padding="@dimen/unit"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:padding="@dimen/unit_half"
+            app:layoutManager="@string/linear_layout_manager"
+            tools:listitem="@layout/item_writing_text"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="Autofill,LabelFor"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

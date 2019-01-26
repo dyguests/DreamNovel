@@ -15,6 +15,7 @@ import com.fanhl.dreamnovel.database.DbClient
 import com.fanhl.dreamnovel.database.dao.writing.ArticleDao
 import com.fanhl.dreamnovel.database.entity.writing.Article
 import com.fanhl.dreamnovel.image.ImagePickerApi
+import com.fanhl.dreamnovel.writing.adapter.WritingAdapter
 import kotlinx.android.synthetic.main.activity_writing.*
 import kotlinx.android.synthetic.main.content_writing.*
 import org.jetbrains.anko.doAsync
@@ -25,6 +26,9 @@ import org.jetbrains.anko.sdk25.coroutines.textChangedListener
  */
 @Route(path = ARouters.Writing.WRITING)
 class WritingActivity : BaseActivity() {
+
+    /** contents adapter */
+    private val adapter by lazy { WritingAdapter() }
 
     private val viewModel by lazyModel<ViewModel>()
 
@@ -72,19 +76,22 @@ class WritingActivity : BaseActivity() {
                 viewModel.title.value = charSequence?.toString()
             }
         }
-        et_content.textChangedListener {
-            onTextChanged { charSequence, start, before, count ->
-                viewModel.content.value = charSequence?.toString()
-            }
-        }
+
+        recycler_view.adapter = adapter
+
+//        et_content.textChangedListener {
+//            onTextChanged { charSequence, start, before, count ->
+//                viewModel.content.value = charSequence?.toString()
+//            }
+//        }
 
         viewModel.apply {
             title.observe(this@WritingActivity) {
                 et_title.setTextDistinct(it)
             }
-            content.observe(this@WritingActivity) {
-                et_content.setTextDistinct(it)
-            }
+//            content.observe(this@WritingActivity) {
+//                et_content.setTextDistinct(it)
+//            }
         }
     }
 
