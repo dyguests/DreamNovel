@@ -13,6 +13,11 @@ import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_square.*
 
+/**
+ * 广场
+ *
+ * @author fanhl
+ */
 class SquareFragment : BaseFragment() {
     private val adapter by lazy {
         SquareAdapter()
@@ -31,6 +36,7 @@ class SquareFragment : BaseFragment() {
     }
 
     private fun refreshData() {
+        removeDispose(DISPOSABLE_SQUARE_LIST)
         Observable
             .create<List<Recommend>> {
                 Thread.sleep(1000)
@@ -47,7 +53,7 @@ class SquareFragment : BaseFragment() {
                     swipe_refresh_layout.isRefreshing = false
                 }
             )
-            .autoDispose()
+            .autoDispose(DISPOSABLE_SQUARE_LIST)
 
 //        NetClient.get<SquareService>()
 //            .list()
@@ -60,6 +66,8 @@ class SquareFragment : BaseFragment() {
     }
 
     companion object {
+        const val DISPOSABLE_SQUARE_LIST = "DISPOSABLE_SQUARE_LIST"
+
         fun newInstance(): SquareFragment {
             return SquareFragment()
         }
