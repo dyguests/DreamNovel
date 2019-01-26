@@ -7,6 +7,9 @@ import kotlinx.android.parcel.Parcelize
 /**
  * 文章
  */
+/**
+ * @param content 注意此字段直接从ArticleDao中是取不到的
+ */
 @Entity
 @Parcelize
 data class Article(

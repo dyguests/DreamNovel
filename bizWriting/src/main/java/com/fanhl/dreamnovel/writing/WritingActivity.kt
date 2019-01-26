@@ -7,16 +7,16 @@ import android.view.MenuItem
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.fanhl.dreamnovel.base.ARouters
 import com.fanhl.dreamnovel.base.BaseActivity
-import com.fanhl.dreamnovel.base.util.DistinctLiveData
-import com.fanhl.dreamnovel.base.util.lazyModel
-import com.fanhl.dreamnovel.base.util.observe
-import com.fanhl.dreamnovel.base.util.setTextDistinct
+import com.fanhl.dreamnovel.base.util.*
 import com.fanhl.dreamnovel.database.DbClient
 import com.fanhl.dreamnovel.database.dao.writing.ArticleDao
+import com.fanhl.dreamnovel.database.dao.writing.queryContent
 import com.fanhl.dreamnovel.database.entity.writing.Article
 import com.fanhl.dreamnovel.database.entity.writing.Paragrafo
 import com.fanhl.dreamnovel.image.ImagePickerApi
 import com.fanhl.dreamnovel.writing.adapter.WritingAdapter
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_writing.*
 import kotlinx.android.synthetic.main.content_writing.*
 import org.jetbrains.anko.doAsync
@@ -62,7 +62,7 @@ class WritingActivity : BaseActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        viewModel.saveCache()
+        viewModel.saveIntoDb()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -108,7 +108,7 @@ class WritingActivity : BaseActivity() {
         )
     }
 
-    class ViewModel : androidx.lifecycle.ViewModel() {
+    class ViewModel : BaseViewModel() {
         /**
          * 当前文章
          *
@@ -126,11 +126,19 @@ class WritingActivity : BaseActivity() {
         init {
             article.observeForever {
                 title.value = it.title
-                content.value = it.content
+
+                removeDispose(DISPOSABLE_CONTENT)
+                it.queryContent()
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeByNext {
+                        content.value = it
+                    }
+                    .autoDispose(DISPOSABLE_CONTENT)
             }
         }
 
-        fun saveCache() {
+        fun saveIntoDb() {
             if (article.value == null
                 && title.value.isNullOrEmpty()
                 && content.value?.isNotEmpty() != true
@@ -153,6 +161,10 @@ class WritingActivity : BaseActivity() {
                     )
                 }
             }
+        }
+
+        companion object {
+            const val DISPOSABLE_CONTENT = "DISPOSABLE_CONTENT"
         }
     }
 }
