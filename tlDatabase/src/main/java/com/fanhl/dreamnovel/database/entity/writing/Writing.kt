@@ -8,7 +8,7 @@ import kotlinx.android.parcel.Parcelize
  * 文章
  */
 /**
- * @param content 注意此字段直接从ArticleDao中是取不到的
+ * @param content 注意此字段直接从ArticleDao中是取不到的,需要从ParagrafoDao中去取
  */
 @Entity
 @Parcelize

@@ -6,6 +6,9 @@ import com.fanhl.dreamnovel.database.entity.writing.Article
 import com.fanhl.dreamnovel.database.entity.writing.Paragrafo
 import io.reactivex.Flowable
 
+/**
+ * 文章
+ */
 @Dao
 interface ArticleDao {
     @Query("SELECT * FROM article")
@@ -29,7 +32,9 @@ interface ArticleDao {
  */
 fun Article.queryContent() = DbClient.get<ParagrafoDao>().getAll(id)
 
-
+/**
+ * 段落
+ */
 @Dao
 interface ParagrafoDao {
     @Query("SELECT * FROM paragrafo")
