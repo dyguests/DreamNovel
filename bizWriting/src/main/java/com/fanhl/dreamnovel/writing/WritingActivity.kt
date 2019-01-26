@@ -14,6 +14,7 @@ import com.fanhl.dreamnovel.database.dao.writing.ParagrafoDao
 import com.fanhl.dreamnovel.database.dao.writing.queryContent
 import com.fanhl.dreamnovel.database.entity.writing.Article
 import com.fanhl.dreamnovel.database.entity.writing.Paragrafo
+import com.fanhl.dreamnovel.image.Image
 import com.fanhl.dreamnovel.image.ImagePickerApi
 import com.fanhl.dreamnovel.writing.adapter.WritingAdapter
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -71,6 +72,7 @@ class WritingActivity : BaseActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (ImagePickerApi.shouldHandle(requestCode, resultCode, data)) {
             val images = ImagePickerApi.getImages(data)
+            viewModel.addImages(images)
         } else {
             super.onActivityResult(requestCode, resultCode, data)
         }
@@ -135,6 +137,23 @@ class WritingActivity : BaseActivity() {
 
         fun setContentParagrafo(index: Int, content: String?) {
             this@ViewModel.content.value?.getOrNull(index)?.content = content
+        }
+
+        fun addImages(images: List<Image>?) {
+            if (images?.isNotEmpty() != true) {
+                return
+            }
+
+            val value = content.value ?: mutableListOf()
+            if (value.lastOrNull()?.isInitState() == true) {
+                value.removeAt(value.size - 1)
+                value.addAll(images.map {
+                    Paragrafo(
+                        type = Paragrafo.TYPE_Image,
+                        content = it.path
+                    )
+                })
+            }
         }
 
         fun saveIntoDb() {
