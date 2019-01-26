@@ -154,6 +154,7 @@ class WritingActivity : BaseActivity() {
                     )
                 })
             }
+            value.add(Paragrafo())
         }
 
         fun saveIntoDb() {

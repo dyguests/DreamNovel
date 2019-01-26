@@ -16,8 +16,8 @@ class WritingAdapter(
         mProviderDelegate.registerProvider(TextProvider(onContentChanged))
     }
 
-    override fun getViewType(item: Paragrafo?) = when (item) {
-        is Paragrafo -> TYPE_TEXT
+    override fun getViewType(item: Paragrafo?) = when (item?.type) {
+        Paragrafo.TYPE_Image -> TYPE_TEXT
         else -> TYPE_TEXT
     }
 
