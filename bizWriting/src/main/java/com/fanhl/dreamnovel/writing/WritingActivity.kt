@@ -2,6 +2,7 @@ package com.fanhl.dreamnovel.writing
 
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.fanhl.dreamnovel.base.ARouters
 import com.fanhl.dreamnovel.base.BaseActivity
@@ -36,8 +37,12 @@ class WritingActivity : BaseActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-//        menuInflater.inflate(R.menu.writing, menu)
+        menuInflater.inflate(R.menu.writing, menu)
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onBackPressed() {
