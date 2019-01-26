@@ -14,8 +14,8 @@ interface ArticleDao {
     @Query("SELECT * FROM article ORDER BY update_time DESC")
     fun getLastests(): Flowable<List<Article>>
 
-    @Insert
-    fun insertAll(vararg articles: Article)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAll(vararg articles: Article): List<Long>
 
     @Delete
     fun delete(article: Article)
@@ -37,4 +37,7 @@ interface ParagrafoDao {
 
     @Query("SELECT * FROM paragrafo WHERE article_id=:articleId")
     fun getAll(articleId: Long): Flowable<List<Paragrafo>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAll(vararg paragrafo: Paragrafo)
 }

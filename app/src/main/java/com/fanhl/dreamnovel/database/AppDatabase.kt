@@ -12,7 +12,7 @@ import com.fanhl.dreamnovel.database.dao.writing.ParagrafoDao
 import com.fanhl.dreamnovel.database.entity.writing.Article
 import com.fanhl.dreamnovel.database.entity.writing.Paragrafo
 
-@Database(entities = [Article::class, Paragrafo::class], version = 3)
+@Database(entities = [Article::class, Paragrafo::class], version = 4)
 abstract class AppDatabase : RoomDatabase(), IAppDatabase {
 
     @Suppress("UNCHECKED_CAST")
@@ -36,14 +36,14 @@ abstract class AppDatabase : RoomDatabase(), IAppDatabase {
             }
 
             IAppDatabase.instance = Room.databaseBuilder(context.applicationContext, AppDatabase::class.java, "dream_novel")
-                .addMigrations(object : Migration(1, 2) {
-                    override fun migrate(database: SupportSQLiteDatabase) {
-                        database.apply {
-                            execSQL("ALTER TABLE article ADD COLUMN create_time INTEGER")
-                            execSQL("ALTER TABLE article ADD COLUMN update_time INTEGER")
-                        }
-                    }
-                })
+//                .addMigrations(object : Migration(1, 2) {
+//                    override fun migrate(database: SupportSQLiteDatabase) {
+//                        database.apply {
+//                            execSQL("ALTER TABLE article ADD COLUMN create_time INTEGER")
+//                            execSQL("ALTER TABLE article ADD COLUMN update_time INTEGER")
+//                        }
+//                    }
+//                })
                 .build()
         }
     }

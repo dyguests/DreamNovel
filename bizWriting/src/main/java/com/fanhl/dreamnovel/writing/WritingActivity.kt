@@ -10,6 +10,7 @@ import com.fanhl.dreamnovel.base.BaseActivity
 import com.fanhl.dreamnovel.base.util.*
 import com.fanhl.dreamnovel.database.DbClient
 import com.fanhl.dreamnovel.database.dao.writing.ArticleDao
+import com.fanhl.dreamnovel.database.dao.writing.ParagrafoDao
 import com.fanhl.dreamnovel.database.dao.writing.queryContent
 import com.fanhl.dreamnovel.database.entity.writing.Article
 import com.fanhl.dreamnovel.database.entity.writing.Paragrafo
@@ -30,7 +31,9 @@ class WritingActivity : BaseActivity() {
 
     /** contents adapter */
     private val adapter by lazy {
-        WritingAdapter()
+        WritingAdapter { position, content ->
+            viewModel.setContentParagrafo(position, content)
+        }
     }
 
     private val viewModel by lazyModel<ViewModel>()
@@ -80,14 +83,6 @@ class WritingActivity : BaseActivity() {
             }
         }
 
-        recycler_view.adapter = adapter
-
-//        et_content.textChangedListener {
-//            onTextChanged { charSequence, start, before, count ->
-//                viewModel.content.value = charSequence?.toString()
-//            }
-//        }
-
         viewModel.apply {
             title.observe(this@WritingActivity) {
                 et_title.setTextDistinct(it)
@@ -99,13 +94,9 @@ class WritingActivity : BaseActivity() {
     }
 
     private fun initData() {
-        viewModel.article.value = intent.getParcelableExtra("Article")
+        recycler_view.adapter = adapter
 
-        adapter.setNewData(
-            listOf(
-                Paragrafo()
-            )
-        )
+        viewModel.article.value = intent.getParcelableExtra("Article") ?: Article()
     }
 
     class ViewModel : BaseViewModel() {
@@ -119,7 +110,7 @@ class WritingActivity : BaseActivity() {
         // ------------------------------------------ form表单 start ------------------------------------------
 
         val title = DistinctLiveData<String>()
-        val content = DistinctLiveData<List<Paragrafo>>()
+        val content = DistinctLiveData<MutableList<Paragrafo>>()
 
         // ------------------------------------------ form表单 end ------------------------------------------
 
@@ -132,10 +123,18 @@ class WritingActivity : BaseActivity() {
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribeByNext {
-                        content.value = it
+                        content.value = it.toMutableList().apply {
+                            if (isEmpty()) {
+                                add(Paragrafo())
+                            }
+                        }
                     }
                     .autoDispose(DISPOSABLE_CONTENT)
             }
+        }
+
+        fun setContentParagrafo(index: Int, content: String?) {
+            this@ViewModel.content.value?.getOrNull(index)?.content = content
         }
 
         fun saveIntoDb() {
@@ -147,19 +146,18 @@ class WritingActivity : BaseActivity() {
             }
 
             doAsync {
-                DbClient.get<ArticleDao>().apply {
-                    article.value?.let {
-                        update(it.apply {
-                            title = this@ViewModel.title.value
-                            content = this@ViewModel.content.value
-                        })
-                    } ?: insertAll(
-                        Article(
-                            title = title.value,
-                            content = content.value
-                        )
-                    )
-                }
+                val ids = DbClient.get<ArticleDao>().insertAll(
+                    article.value?.apply {
+                        title = this@ViewModel.title.value
+                        content = this@ViewModel.content.value
+                    } ?: return@doAsync
+                )
+                //FIXME 如果最后一项为空则不加入（默认输入项）
+                DbClient.get<ParagrafoDao>().insertAll(
+                    *content.value?.onEach {
+                        it.articleId = ids.firstOrNull() ?: return@doAsync
+                    }?.toTypedArray() ?: return@doAsync
+                )
             }
         }
 

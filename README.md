@@ -10,6 +10,8 @@ PageView
 
 - [ ] 之后为一堆异步初始化的东西加上回调，combineLast
 
+- [ ] dao : rx -> liveData
+
 ## Notice
 
 1. apply plugin: 'kotlin-kapt'
