@@ -1,5 +1,6 @@
 package com.fanhl.dreamnovel.writing
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -13,6 +14,7 @@ import com.fanhl.dreamnovel.base.util.setTextDistinct
 import com.fanhl.dreamnovel.database.DbClient
 import com.fanhl.dreamnovel.database.dao.writing.ArticleDao
 import com.fanhl.dreamnovel.database.entity.writing.Article
+import com.fanhl.dreamnovel.image.ImagePickerApi
 import kotlinx.android.synthetic.main.activity_writing.*
 import kotlinx.android.synthetic.main.content_writing.*
 import org.jetbrains.anko.doAsync
@@ -43,6 +45,7 @@ class WritingActivity : BaseActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem?) = when (item?.itemId) {
         R.id.action_add -> {
+            ImagePickerApi.pick(this@WritingActivity)
             true
         }
         else -> {
@@ -53,6 +56,14 @@ class WritingActivity : BaseActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
         viewModel.saveCache()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (ImagePickerApi.shouldHandle(requestCode, resultCode, data)) {
+            val images = ImagePickerApi.getImages(data)
+        } else {
+            super.onActivityResult(requestCode, resultCode, data)
+        }
     }
 
     private fun assignViews() {

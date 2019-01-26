@@ -52,4 +52,5 @@ dependencies {
     implementation project(':tlDatabase')
     implementation "androidx.room:room-runtime:2.1.0-alpha03"
     kapt "androidx.room:room-compiler:2.1.0-alpha03"
+    implementation project(path: ':tlImagePicker')
 }
