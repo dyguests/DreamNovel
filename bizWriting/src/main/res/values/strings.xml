@@ -2,4 +2,6 @@
     <string name="title_activity_writing">Writing</string>
     <string name="writing_title_hint">Input title...</string>
     <string name="writing_content_hint">Input content...</string>
+
+    <string name="menu_add">Add</string>
 </resources>
