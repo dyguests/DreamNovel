@@ -144,17 +144,18 @@ class WritingActivity : BaseActivity() {
                 return
             }
 
-            val value = content.value ?: mutableListOf()
-            if (value.lastOrNull()?.isInitState() == true) {
-                value.removeAt(value.size - 1)
-                value.addAll(images.map {
-                    Paragrafo(
-                        type = Paragrafo.TYPE_IMAGE,
-                        content = it.path
-                    )
-                })
+            content.value = (content.value ?: mutableListOf()).apply {
+                if (lastOrNull()?.isInitState() == true) {
+                    removeAt(size - 1)
+                    addAll(images.map {
+                        Paragrafo(
+                            type = Paragrafo.TYPE_IMAGE,
+                            content = it.path
+                        )
+                    })
+                }
+                add(Paragrafo())
             }
-            value.add(Paragrafo())
         }
 
         fun saveIntoDb() {
