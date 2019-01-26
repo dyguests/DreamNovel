@@ -51,6 +51,6 @@ data class Paragrafo(
 
     companion object {
         const val TYPE_TEXT = 0
-        const val TYPE_Image = 1
+        const val TYPE_IMAGE = 1
     }
 }

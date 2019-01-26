@@ -10,5 +10,5 @@
         android:gravity="start|top"
         android:hint="@string/writing_content_hint"
         android:inputType="textMultiLine"
-        android:padding="@dimen/unit"
+        android:padding="@dimen/unit_half"
         tools:ignore="Autofill,LabelFor"/>

@@ -149,7 +149,7 @@ class WritingActivity : BaseActivity() {
                 value.removeAt(value.size - 1)
                 value.addAll(images.map {
                     Paragrafo(
-                        type = Paragrafo.TYPE_Image,
+                        type = Paragrafo.TYPE_IMAGE,
                         content = it.path
                     )
                 })

@@ -3,6 +3,7 @@ package com.fanhl.dreamnovel.writing.adapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.chad.library.adapter.base.MultipleItemRvAdapter
 import com.fanhl.dreamnovel.database.entity.writing.Paragrafo
+import com.fanhl.dreamnovel.writing.provider.ImageProvider
 import com.fanhl.dreamnovel.writing.provider.TextProvider
 
 class WritingAdapter(
@@ -14,14 +15,17 @@ class WritingAdapter(
 
     override fun registerItemProvider() {
         mProviderDelegate.registerProvider(TextProvider(onContentChanged))
+        mProviderDelegate.registerProvider(ImageProvider(onContentChanged))
     }
 
     override fun getViewType(item: Paragrafo?) = when (item?.type) {
-        Paragrafo.TYPE_Image -> TYPE_TEXT
+        Paragrafo.TYPE_TEXT -> TYPE_TEXT
+        Paragrafo.TYPE_IMAGE -> TYPE_IMAGE
         else -> TYPE_TEXT
     }
 
     companion object {
         const val TYPE_TEXT = 1
+        const val TYPE_IMAGE = 2
     }
 }
