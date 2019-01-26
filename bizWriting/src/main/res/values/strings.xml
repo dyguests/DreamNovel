@@ -1,4 +1,5 @@
 <resources>
     <string name="title_activity_writing">Writing</string>
-    <string name="writing_input_hint">Input text...</string>
+    <string name="writing_title_hint">Input title...</string>
+    <string name="writing_content_hint">Input content...</string>
 </resources>
