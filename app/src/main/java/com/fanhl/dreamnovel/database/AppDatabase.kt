@@ -8,23 +8,22 @@ import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.fanhl.dreamnovel.database.dao.writing.ArticleDao
+import com.fanhl.dreamnovel.database.dao.writing.ParagrafoDao
 import com.fanhl.dreamnovel.database.entity.writing.Article
-import com.fanhl.dreamnovel.ui.entrance.SplashActivity
+import com.fanhl.dreamnovel.database.entity.writing.Paragrafo
 
-@Database(entities = [Article::class], version = 2)
+@Database(entities = [Article::class, Paragrafo::class], version = 2)
 abstract class AppDatabase : RoomDatabase(), IAppDatabase {
 
     @Suppress("UNCHECKED_CAST")
-    override fun <T> get(clazz: Class<T>): T {
-        if (clazz.isAssignableFrom(SplashActivity::class.java)) {
-            TODO("测试用")
-        } else if (clazz.isAssignableFrom(ArticleDao::class.java)) {
-            return articleDao() as T
-        }
-        throw Exception("未找到对应 dao")
+    override fun <T> get(clazz: Class<T>) = when {
+        clazz.isAssignableFrom(ArticleDao::class.java) -> articleDao() as T
+        clazz.isAssignableFrom(ParagrafoDao::class.java) -> paragrafoDao() as T
+        else -> throw Exception("未找到对应 dao")
     }
 
     abstract fun articleDao(): ArticleDao
+    abstract fun paragrafoDao(): ParagrafoDao
 
     companion object {
         /** TAG  */

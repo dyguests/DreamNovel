@@ -1,11 +1,8 @@
 package com.fanhl.dreamnovel.database.dao.writing
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import com.fanhl.dreamnovel.database.entity.writing.Article
+import com.fanhl.dreamnovel.database.entity.writing.Paragrafo
 import io.reactivex.Flowable
 
 @Dao
@@ -24,4 +21,10 @@ interface ArticleDao {
 
     @Update
     fun update(article: Article)
+}
+
+@Dao
+interface ParagrafoDao {
+    @Query("SELECT * FROM paragrafo")
+    fun getAll(): Flowable<List<Paragrafo>>
 }
