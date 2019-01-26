@@ -79,16 +79,22 @@ class WritingActivity : BaseActivity() {
         }
 
         fun saveCache() {
-            if (content.value.isNullOrEmpty()) {
+            if (article.value == null && content.value.isNullOrEmpty()) {
                 return
             }
 
             doAsync {
-                DbClient.get<ArticleDao>().insertAll(
-                    Article(
-                        content = content.value
+                DbClient.get<ArticleDao>().apply {
+                    article.value?.let {
+                        update(it.apply {
+                            content = this@ViewModel.content.value
+                        })
+                    } ?: insertAll(
+                        Article(
+                            content = content.value
+                        )
                     )
-                )
+                }
             }
         }
     }
