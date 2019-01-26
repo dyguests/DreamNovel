@@ -66,6 +66,7 @@ class SquareFragment : BaseFragment() {
     }
 
     companion object {
+        /** 获取列表的disposable */
         const val DISPOSABLE_SQUARE_LIST = "DISPOSABLE_SQUARE_LIST"
 
         fun newInstance(): SquareFragment {
