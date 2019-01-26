@@ -144,7 +144,7 @@ class WritingActivity : BaseActivity() {
                 return
             }
 
-            content.value = (content.value ?: mutableListOf()).apply {
+            content.value = (content.value?.toMutableList() ?: mutableListOf()).apply {
                 if (lastOrNull()?.isInitState() == true) {
                     removeAt(size - 1)
                     addAll(images.map {
