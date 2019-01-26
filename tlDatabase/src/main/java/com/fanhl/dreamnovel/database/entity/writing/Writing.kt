@@ -18,6 +18,18 @@ data class Article(
     @Ignore var content: List<Paragrafo>? = null,
     @ColumnInfo(name = "create_time") var createTime: Long = System.currentTimeMillis(),
     @ColumnInfo(name = "update_time") var updateTime: Long = System.currentTimeMillis()
-) : Parcelable {
+) : Parcelable
 
+/**
+ * 段落（一篇文章分成多个段落）
+ */
+@Entity
+@Parcelize
+data class Paragrafo(
+    @ColumnInfo var type: Int = TYPE_TEXT,
+    @ColumnInfo var content: String? = null
+) : Parcelable {
+    companion object {
+        const val TYPE_TEXT = 0
+    }
 }
