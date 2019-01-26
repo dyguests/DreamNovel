@@ -12,6 +12,8 @@ PageView
 
 - [ ] dao : rx -> liveData
 
+- [ ] TextProvider 的点击区域，默认文字
+
 ## Notice
 
 1. apply plugin: 'kotlin-kapt'
