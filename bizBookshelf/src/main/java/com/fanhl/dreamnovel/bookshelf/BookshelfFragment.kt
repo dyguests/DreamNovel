@@ -86,7 +86,7 @@ class BookshelfFragment : BaseFragment() {
                 .getLastests()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeByNext { it ->
+                .subscribeByNext {
                     this@ViewModel.articles.value = it
                 }
                 .autoDispose()
