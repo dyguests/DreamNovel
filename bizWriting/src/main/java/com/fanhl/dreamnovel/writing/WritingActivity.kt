@@ -138,9 +138,8 @@ class WritingActivity : BaseActivity() {
         }
 
         fun saveIntoDb() {
-            if (article.value == null
-                && title.value.isNullOrEmpty()
-                && content.value?.isNotEmpty() != true
+            if (title.value.isNullOrBlank()
+                && content.value?.getOrNull(0)?.isInitState() == true
             ) {
                 return
             }

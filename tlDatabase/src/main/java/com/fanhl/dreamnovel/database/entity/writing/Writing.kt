@@ -35,6 +35,20 @@ data class Paragrafo(
     @ColumnInfo var type: Int = TYPE_TEXT,
     @ColumnInfo var content: String? = null
 ) : Parcelable {
+    /**
+     * 这里判断当前段落是不是初始状态（默认状态）
+     *
+     * 一般用来保存时，初始状态不保存
+     */
+    fun isInitState() = when (type) {
+        TYPE_TEXT -> {
+            content.isNullOrBlank()
+        }
+        else -> {
+            content.isNullOrBlank()
+        }
+    }
+
     companion object {
         const val TYPE_TEXT = 0
     }
