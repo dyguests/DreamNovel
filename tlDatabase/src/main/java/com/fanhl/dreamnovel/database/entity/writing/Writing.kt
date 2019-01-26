@@ -1,10 +1,7 @@
 package com.fanhl.dreamnovel.database.entity.writing
 
 import android.os.Parcelable
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.Ignore
-import androidx.room.PrimaryKey
+import androidx.room.*
 import kotlinx.android.parcel.Parcelize
 
 /**
@@ -23,9 +20,15 @@ data class Article(
 /**
  * 段落（一篇文章分成多个段落）
  */
-@Entity
+@Entity(
+    foreignKeys = [
+        ForeignKey(entity = Article::class, parentColumns = arrayOf("id"), childColumns = arrayOf("article_id"))
+    ]
+)
 @Parcelize
 data class Paragrafo(
+    @ColumnInfo(name = "article_id") var articleId: Long = 0,
+    @PrimaryKey(autoGenerate = true) var id: Long = 0,
     @ColumnInfo var type: Int = TYPE_TEXT,
     @ColumnInfo var content: String? = null
 ) : Parcelable {
