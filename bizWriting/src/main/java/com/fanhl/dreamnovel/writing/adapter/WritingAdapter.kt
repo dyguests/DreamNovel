@@ -9,8 +9,19 @@ import com.fanhl.dreamnovel.writing.provider.TextProvider
 class WritingAdapter(
     private val onContentChanged: (position: Int, content: String?) -> Unit
 ) : MultipleItemRvAdapter<Paragrafo, BaseViewHolder>(null) {
+    /** 列表最后一项 */
+    private var lastHolder: BaseViewHolder? = null
+
     init {
         finishInitialize()
+    }
+
+    override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
+        super.onBindViewHolder(holder, position)
+
+        if (position == data.size - 1) {
+            lastHolder = holder
+        }
     }
 
     override fun registerItemProvider() {
@@ -30,7 +41,7 @@ class WritingAdapter(
      * 当点击reyclerView的空白区域时
      */
     fun focusLast() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        lastHolder?.itemView?.requestFocus()
     }
 
     companion object {
