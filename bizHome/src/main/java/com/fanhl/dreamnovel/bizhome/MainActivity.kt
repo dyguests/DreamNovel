@@ -29,6 +29,11 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        assignViews()
+        initData()
+    }
+
+    private fun assignViews() {
         view_pager.addOnPageChangeListener(object : ViewPager.SimpleOnPageChangeListener() {
             private val navigationItemIds = arrayOf(
                 R.id.navigation_square,
@@ -53,7 +58,10 @@ class MainActivity : BaseActivity() {
             }
             false
         })
+    }
 
+    private fun initData() {
         view_pager.adapter = adapter
+        view_pager.currentItem = 1
     }
 }
