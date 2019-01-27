@@ -1,25 +1,23 @@
 package com.fanhl.dreamnovel.writing.adapter
 
-import android.content.Context
-import android.view.inputmethod.InputMethodManager
-import com.chad.library.adapter.base.BaseViewHolder
 import com.chad.library.adapter.base.MultipleItemRvAdapter
 import com.fanhl.dreamnovel.database.entity.writing.Paragrafo
+import com.fanhl.dreamnovel.writing.helper.WritingViewHolder
 import com.fanhl.dreamnovel.writing.provider.ImageProvider
 import com.fanhl.dreamnovel.writing.provider.TextProvider
 
 
 class WritingAdapter(
     private val onContentChanged: (position: Int, content: String?) -> Unit
-) : MultipleItemRvAdapter<Paragrafo, BaseViewHolder>(null) {
+) : MultipleItemRvAdapter<Paragrafo, WritingViewHolder>(null) {
     /** 列表最后一项 */
-    private var lastHolder: BaseViewHolder? = null
+    private var lastHolder: WritingViewHolder? = null
 
     init {
         finishInitialize()
     }
 
-    override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: WritingViewHolder, position: Int) {
         super.onBindViewHolder(holder, position)
 
         if (position == data.size - 1) {
@@ -44,10 +42,7 @@ class WritingAdapter(
      * 当点击reyclerView的空白区域时
      */
     fun focusLast() {
-        lastHolder?.itemView?.apply {
-            requestFocus()
-            //FIXME 等会写 2019.1.27
-        }
+        lastHolder?.requestFocus()
     }
 
     companion object {
@@ -55,3 +50,4 @@ class WritingAdapter(
         const val TYPE_IMAGE = 2
     }
 }
+
