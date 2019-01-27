@@ -28,7 +28,7 @@ class TextProvider(
                 hint = if (position == 0) resources.getString(R.string.writing_content_hint) else null
                 textChangedListener {
                     onTextChanged { charSequence, start, before, count ->
-                        this@TextProvider.onContentChanged(position, charSequence?.toString())
+                        this@TextProvider.onContentChanged(helper.adapterPosition, charSequence?.toString())
                     }
                 }
 

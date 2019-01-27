@@ -148,7 +148,7 @@ class WritingActivity : BaseActivity() {
                 return
             }
 
-            content.value = (content.value?.toMutableList() ?: mutableListOf()).apply {
+            val list = (content.value?.toMutableList() ?: mutableListOf()).apply {
                 if (lastOrNull()?.isInitState() == true) {
                     removeAt(size - 1)
                 }
@@ -160,10 +160,12 @@ class WritingActivity : BaseActivity() {
                 })
                 add(Paragrafo())
             }
+            content.value = list
         }
 
         fun saveIntoDb() {
-            if (title.value.isNullOrBlank()
+            if (article.value?.id == 0L
+                && title.value.isNullOrBlank()
                 && content.value?.getOrNull(0)?.isInitState() == true
             ) {
                 return
