@@ -1,9 +1,7 @@
 package com.fanhl.dreamnovel.writing.provider
 
-import android.content.Context
-import android.view.View
-import android.view.inputmethod.InputMethodManager
 import com.fanhl.dreamnovel.base.util.setTextDistinct
+import com.fanhl.dreamnovel.base.util.showSoftInput
 import com.fanhl.dreamnovel.database.entity.writing.Paragrafo
 import com.fanhl.dreamnovel.writing.R
 import com.fanhl.dreamnovel.writing.adapter.WritingAdapter
@@ -38,9 +36,4 @@ class TextProvider(
             }
         }
     }
-}
-
-private fun View.showSoftInput() {
-    val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
-    imm?.showSoftInput(this, InputMethodManager.SHOW_IMPLICIT)
 }
