@@ -1,5 +1,6 @@
 package com.fanhl.dreamnovel.database.dao.writing
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.fanhl.dreamnovel.database.DbClient
 import com.fanhl.dreamnovel.database.entity.writing.Article
@@ -15,7 +16,7 @@ interface ArticleDao {
     fun getAll(): Flowable<List<Article>>
 
     @Query("SELECT * FROM article ORDER BY update_time DESC")
-    fun getLastests(): Flowable<List<Article>>
+    fun getLastests(): LiveData<List<Article>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(vararg articles: Article): List<Long>

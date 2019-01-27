@@ -4,20 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.MediatorLiveData
 import com.fanhl.dreamnovel.base.ARouters
 import com.fanhl.dreamnovel.base.BaseFragment
 import com.fanhl.dreamnovel.base.navigation
 import com.fanhl.dreamnovel.base.util.BaseViewModel
 import com.fanhl.dreamnovel.base.util.lazyModel
 import com.fanhl.dreamnovel.base.util.observe
-import com.fanhl.dreamnovel.base.util.subscribeByNext
 import com.fanhl.dreamnovel.bookshelf.adapter.BookshelfAdapter
 import com.fanhl.dreamnovel.database.DbClient
 import com.fanhl.dreamnovel.database.dao.writing.ArticleDao
 import com.fanhl.dreamnovel.database.entity.writing.Article
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_bookshelf.*
 
 /**
@@ -79,17 +75,10 @@ class BookshelfFragment : BaseFragment() {
     }
 
     class ViewModel : BaseViewModel() {
-        val articles = MediatorLiveData<List<Article>>()
+        val articles by lazy { DbClient.get<ArticleDao>().getLastests() }
 
         fun initData() {
-            DbClient.get<ArticleDao>()
-                .getLastests()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeByNext {
-                    this@ViewModel.articles.value = it
-                }
-                .autoDispose()
+
         }
     }
 }
