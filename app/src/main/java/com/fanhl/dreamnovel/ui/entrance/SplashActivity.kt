@@ -14,7 +14,8 @@ class SplashActivity : BaseActivity() {
         setContentView(R.layout.activity_splash)
 
         tv_name.postDelayed({
-            ARouters.Account.LOGIN.navigation()
+//            ARouters.Account.LOGIN.navigation()
+            ARouters.Home.MAIN.navigation()
             finish()
         }, 2000)
     }
