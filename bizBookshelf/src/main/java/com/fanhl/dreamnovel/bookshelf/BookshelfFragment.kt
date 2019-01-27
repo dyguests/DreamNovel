@@ -13,6 +13,7 @@ import com.fanhl.dreamnovel.base.util.observe
 import com.fanhl.dreamnovel.bookshelf.adapter.BookshelfAdapter
 import com.fanhl.dreamnovel.database.DbClient
 import com.fanhl.dreamnovel.database.dao.writing.ArticleDao
+import com.fanhl.dreamnovel.database.dao.writing.getRecentOverviews
 import com.fanhl.dreamnovel.database.entity.writing.Article
 import kotlinx.android.synthetic.main.fragment_bookshelf.*
 
@@ -75,10 +76,10 @@ class BookshelfFragment : BaseFragment() {
     }
 
     class ViewModel : BaseViewModel() {
-        val articles by lazy { DbClient.get<ArticleDao>().getLastests() }
+        val articles by lazy { DbClient.get<ArticleDao>().getRecentOverviews() }
 
         fun initData() {
-
+            DbClient.get<ArticleDao>().getRecentArticleAndFirstParagrafos()
         }
     }
 }

@@ -3,6 +3,7 @@ package com.fanhl.dreamnovel.base.util
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import io.reactivex.Observable
 
 /**
  * desc:
@@ -18,18 +19,18 @@ fun <T> LiveData<T>.observe(owner: LifecycleOwner, observer: (T?) -> Unit) = obs
     observer(it)
 })
 
-//fun <T> LiveData<T>.asObservable(owner: LifecycleOwner): Observable<T?> {
-//    return Observable.create { emitter ->
-//        observe(owner) { data ->
-//            try {
-////                if (data != null) {
-//                emitter.onNext(data)
-////                } else {
-////                    emitter.onError(NullPointerException("com.fanhl.architecturedemo.rxjava2.RxLiveData.asObservable中发送的数据不能为null"))
-////                }
-//            } catch (e: Exception) {
-//                emitter.onError(e)
-//            }
-//        }
-//    }
-//}
+fun <T> LiveData<T>.asObservable(owner: LifecycleOwner): Observable<T> {
+    return Observable.create { emitter ->
+        observe(owner) { data ->
+            try {
+                if (data != null) {
+                    emitter.onNext(data)
+                } else {
+                    emitter.onError(NullPointerException("com.fanhl.architecturedemo.rxjava2.RxLiveData.asObservable中发送的数据不能为null"))
+                }
+            } catch (e: Exception) {
+                emitter.onError(e)
+            }
+        }
+    }
+}
