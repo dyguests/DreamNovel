@@ -25,6 +25,22 @@ interface ArticleDao {
 
     @Update
     fun update(article: Article)
+
+//    @Query(
+//        "SELECT a.id,\n" +
+//                "       a.title,\n" +
+//                "       a.create_time,\n" +
+//                "       a.update_time,\n" +
+//                "       p.type,\n" +
+//                "       p.content\n" +
+//                "  FROM article a\n" +
+//                "       LEFT JOIN\n" +
+//                "       paragrafo p ON a.id = p.article_id\n" +
+//                " GROUP BY p.article_id\n" +
+//                " ORDER BY a.update_time DESC,\n" +
+//                "          p.id ASC;\n"
+//    )
+//    fun getLastestThumbs()
 }
 
 /**
