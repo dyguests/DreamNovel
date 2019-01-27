@@ -84,7 +84,6 @@ class WritingActivity : BaseActivity() {
                 viewModel.title.value = charSequence?.toString()
             }
         }
-        recycler_view.setOnClickListener { adapter.focusLast() }
 
         viewModel.apply {
             title.observe(this@WritingActivity) {
