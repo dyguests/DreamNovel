@@ -84,6 +84,10 @@ class WritingActivity : BaseActivity() {
                 viewModel.title.value = charSequence?.toString()
             }
         }
+        //当点击recyclerView的空白区域时，让adapter的最后一个元素获取焦点
+        recycler_view.setOnNoChildClickListener {
+            adapter.focusLast()
+        }
 
         viewModel.apply {
             title.observe(this@WritingActivity) {
