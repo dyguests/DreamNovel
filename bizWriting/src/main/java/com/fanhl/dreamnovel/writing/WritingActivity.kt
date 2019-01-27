@@ -84,6 +84,7 @@ class WritingActivity : BaseActivity() {
                 viewModel.title.value = charSequence?.toString()
             }
         }
+        recycler_view.setOnClickListener { adapter.focusLast() }
 
         viewModel.apply {
             title.observe(this@WritingActivity) {
@@ -147,13 +148,13 @@ class WritingActivity : BaseActivity() {
             content.value = (content.value?.toMutableList() ?: mutableListOf()).apply {
                 if (lastOrNull()?.isInitState() == true) {
                     removeAt(size - 1)
-                    addAll(images.map {
-                        Paragrafo(
-                            type = Paragrafo.TYPE_IMAGE,
-                            content = it.path
-                        )
-                    })
                 }
+                addAll(images.map {
+                    Paragrafo(
+                        type = Paragrafo.TYPE_IMAGE,
+                        content = it.path
+                    )
+                })
                 add(Paragrafo())
             }
         }

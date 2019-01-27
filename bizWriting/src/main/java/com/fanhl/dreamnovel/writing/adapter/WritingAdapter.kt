@@ -24,6 +24,15 @@ class WritingAdapter(
         else -> TYPE_TEXT
     }
 
+    /**
+     * 让adapter的最后一个元素获取焦点
+     *
+     * 当点击reyclerView的空白区域时
+     */
+    fun focusLast() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     companion object {
         const val TYPE_TEXT = 1
         const val TYPE_IMAGE = 2

@@ -3,7 +3,6 @@ package com.fanhl.dreamnovel.writing.provider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.chad.library.adapter.base.BaseViewHolder
-import com.chad.library.adapter.base.provider.BaseItemProvider
 import com.fanhl.dreamnovel.database.entity.writing.Paragrafo
 import com.fanhl.dreamnovel.writing.R
 import com.fanhl.dreamnovel.writing.adapter.WritingAdapter
@@ -11,7 +10,7 @@ import kotlinx.android.synthetic.main.item_writing_image.view.*
 
 class ImageProvider(
     private val onContentChanged: (position: Int, text: String?) -> Unit
-) : BaseItemProvider<Paragrafo, BaseViewHolder>() {
+) : WriteProvider() {
     override fun layout() = R.layout.item_writing_image
 
     override fun viewType() = WritingAdapter.TYPE_IMAGE

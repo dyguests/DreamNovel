@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--注:只有第一项初始状态才显示hint-->
 <EditText
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -8,7 +9,7 @@
         android:background="@null"
         android:ems="10"
         android:gravity="start|top"
-        android:hint="@string/writing_content_hint"
         android:inputType="textMultiLine"
         android:padding="@dimen/unit_half"
         tools:ignore="Autofill,LabelFor"/>
+        <!--android:hint="@string/writing_content_hint"-->
