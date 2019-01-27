@@ -1,10 +1,12 @@
 package com.fanhl.dreamnovel.bookshelf.adapter
 
 import android.view.View
+import com.bumptech.glide.Glide
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.fanhl.dreamnovel.bookshelf.R
 import com.fanhl.dreamnovel.database.entity.writing.Article
+import com.fanhl.dreamnovel.database.entity.writing.Paragrafo
 import kotlinx.android.synthetic.main.item_bookshelf_diary.view.*
 
 class BookshelfAdapter : BaseQuickAdapter<Article, BaseViewHolder>(R.layout.item_bookshelf_diary) {
@@ -16,8 +18,31 @@ class BookshelfAdapter : BaseQuickAdapter<Article, BaseViewHolder>(R.layout.item
             } ?: let {
                 tv_title.visibility = View.GONE
             }
-            //FIXME 之后要改的
-            tv_content.text = item?.content?.firstOrNull()?.content
+
+            //第一个段落（用来显示的）
+            val paragrafo = item?.content?.firstOrNull()
+            when (paragrafo?.type) {
+                Paragrafo.TYPE_TEXT -> {
+                    tv_content.apply {
+                        visibility = View.VISIBLE
+                        text = paragrafo.content
+                    }
+                    img_cover.visibility = View.GONE
+                }
+                Paragrafo.TYPE_IMAGE -> {
+                    tv_content.visibility = View.GONE
+                    img_cover.apply {
+                        visibility = View.VISIBLE
+                        Glide.with(this)
+                            .load(paragrafo.content)
+                            .into(this)
+                    }
+                }
+                else -> {
+                    tv_content.visibility = View.GONE
+                    img_cover.visibility = View.GONE
+                }
+            }
         }
     }
 }
