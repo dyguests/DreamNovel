@@ -12,7 +12,9 @@ PageView
 
 - [ ] dao : rx -> liveData
 
-- [ ] TextProvider 的点击区域，默认文字
+- [x] TextProvider 的点击区域，默认文字
+
+- [ ] 点击 RecyclerView 空白处后， 最后一个 itemView 要focus. 如果是TextView 光标要移到最后，弹出软键盘
 
 ## Notice
 

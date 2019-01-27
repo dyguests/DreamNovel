@@ -1,10 +1,13 @@
 package com.fanhl.dreamnovel.writing.adapter
 
+import android.content.Context
+import android.view.inputmethod.InputMethodManager
 import com.chad.library.adapter.base.BaseViewHolder
 import com.chad.library.adapter.base.MultipleItemRvAdapter
 import com.fanhl.dreamnovel.database.entity.writing.Paragrafo
 import com.fanhl.dreamnovel.writing.provider.ImageProvider
 import com.fanhl.dreamnovel.writing.provider.TextProvider
+
 
 class WritingAdapter(
     private val onContentChanged: (position: Int, content: String?) -> Unit
@@ -41,7 +44,10 @@ class WritingAdapter(
      * 当点击reyclerView的空白区域时
      */
     fun focusLast() {
-        lastHolder?.itemView?.requestFocus()
+        lastHolder?.itemView?.apply {
+            requestFocus()
+            //FIXME 等会写 2019.1.27
+        }
     }
 
     companion object {
