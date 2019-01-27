@@ -1,7 +1,7 @@
 package com.fanhl.dreamnovel.writing.provider
 
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
+import com.fanhl.dreamnovel.base.util.placeholder
 import com.fanhl.dreamnovel.database.entity.writing.Paragrafo
 import com.fanhl.dreamnovel.writing.R
 import com.fanhl.dreamnovel.writing.adapter.WritingAdapter
@@ -19,7 +19,7 @@ class ImageProvider(
         helper?.itemView?.apply {
             Glide.with(img_cover)
                 .load(data?.content)
-                .apply(RequestOptions().placeholder(R.drawable.cover_place_holder))
+                .placeholder(R.drawable.cover_place_holder)
                 .into(img_cover)
         }
     }

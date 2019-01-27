@@ -4,6 +4,7 @@ import android.view.View
 import com.bumptech.glide.Glide
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
+import com.fanhl.dreamnovel.base.util.placeholder
 import com.fanhl.dreamnovel.bookshelf.R
 import com.fanhl.dreamnovel.database.entity.writing.Article
 import com.fanhl.dreamnovel.database.entity.writing.Paragrafo
@@ -35,6 +36,7 @@ class BookshelfAdapter : BaseQuickAdapter<Article, BaseViewHolder>(R.layout.item
                         visibility = View.VISIBLE
                         Glide.with(this)
                             .load(paragrafo.content)
+                            .placeholder(R.drawable.cover_place_holder)
                             .into(this)
                     }
                 }
