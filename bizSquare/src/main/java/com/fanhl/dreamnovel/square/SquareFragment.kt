@@ -5,13 +5,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.fanhl.dreamnovel.base.BaseFragment
+import com.fanhl.dreamnovel.base.util.toast
 import com.fanhl.dreamnovel.square.adapter.SquareAdapter
+import com.fanhl.dreamnovel.square.component.ActivityComponent
+import com.fanhl.dreamnovel.square.component.DaggerActivityComponent
+import com.fanhl.dreamnovel.square.model.UserModel
+import com.fanhl.dreamnovel.square.module.ActivityModule
 import com.fanhl.dreamnovel.square.provider.Recommend
 import io.reactivex.Observable
+import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_square.*
+import javax.inject.Inject
+
 
 /**
  * 广场
@@ -19,11 +27,20 @@ import kotlinx.android.synthetic.main.fragment_square.*
  * @author fanhl
  */
 class SquareFragment : BaseFragment() {
+    private var mActivityComponent: ActivityComponent? = null
+
+    @Inject
+    lateinit var userModel: UserModel
+
     private val adapter by lazy {
         SquareAdapter()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) = inflater.inflate(R.layout.fragment_square, container, false)!!
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        mActivityComponent = DaggerActivityComponent.builder().activityModule(ActivityModule()).build()
+        return inflater.inflate(R.layout.fragment_square, container, false)!!
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         assignViews()
@@ -63,6 +80,20 @@ class SquareFragment : BaseFragment() {
 //                toast("测试 list")
 //            }
 //            .autoDispose()
+
+        Single
+            .create<String> {
+                Thread.sleep(2000)
+                it.onSuccess(userModel.testMethod())
+            }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeBy(
+                onSuccess = {
+                    toast(it)
+                }
+            )
+            .dispose()
     }
 
     companion object {
