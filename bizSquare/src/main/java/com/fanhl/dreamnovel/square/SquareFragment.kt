@@ -38,6 +38,7 @@ class SquareFragment : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         mActivityComponent = DaggerActivityComponent.builder().activityModule(ActivityModule()).build()
+        mActivityComponent?.inject(this)
         return inflater.inflate(R.layout.fragment_square, container, false)!!
     }
 
@@ -91,9 +92,12 @@ class SquareFragment : BaseFragment() {
             .subscribeBy(
                 onSuccess = {
                     toast(it)
+                },
+                onError = {
+                    toast(it.message ?: "error")
                 }
             )
-            .dispose()
+            .autoDispose()
     }
 
     companion object {

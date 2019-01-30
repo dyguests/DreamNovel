@@ -46,3 +46,7 @@ Paragrafo 段落
 1. [alibaba/ARouter](https://github.com/alibaba/ARouter)
 
 2. [MultipleItemRvAdapter](https://blog.csdn.net/Chay_Chan/article/details/79658655)
+
+3. [使用Dagger 2进行依赖注入](http://codethink.me/2015/08/06/dependency-injection-with-dagger-2/)
+
+4. [Dagger2 最清晰的使用教程](https://www.jianshu.com/p/24af4c102f62)
