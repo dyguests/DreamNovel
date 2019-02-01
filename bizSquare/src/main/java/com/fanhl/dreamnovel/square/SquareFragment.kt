@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import com.fanhl.dreamnovel.base.BaseFragment
 import com.fanhl.dreamnovel.base.util.toast
 import com.fanhl.dreamnovel.square.adapter.SquareAdapter
+import com.fanhl.dreamnovel.square.component.DaggerActivityComponent
+import com.fanhl.dreamnovel.square.component.DaggerContainerComponent
 import com.fanhl.dreamnovel.square.component.DaggerSquareServiceComponent
 import com.fanhl.dreamnovel.square.model.ShoppingCartModel
 import com.fanhl.dreamnovel.square.model.UserModel
@@ -41,11 +43,17 @@ class SquareFragment : BaseFragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-//        val mActivityComponent = DaggerActivityComponent.builder().activityModule(ActivityModule()).build()
-//        val containerComponent = DaggerContainerComponent.builder().activityComponent(mActivityComponent).containerModule(ContainerModule()).build()
-//        containerComponent?.inject(this)
+        val activityComponent = DaggerActivityComponent.builder().build()
 
-        DaggerSquareServiceComponent.builder().build().inject(this)
+        val containerComponent = DaggerContainerComponent.builder()
+            .activityComponent(activityComponent)
+            .build()
+
+        DaggerSquareServiceComponent.builder()
+            .activityComponent(activityComponent)
+            .containerComponent(containerComponent)
+            .build()
+            .inject(this)
 
         return inflater.inflate(R.layout.fragment_square, container, false)!!
     }
