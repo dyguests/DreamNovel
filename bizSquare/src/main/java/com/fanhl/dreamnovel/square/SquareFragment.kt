@@ -7,15 +7,10 @@ import android.view.ViewGroup
 import com.fanhl.dreamnovel.base.BaseFragment
 import com.fanhl.dreamnovel.base.util.toast
 import com.fanhl.dreamnovel.square.adapter.SquareAdapter
-import com.fanhl.dreamnovel.square.component.DaggerActivityComponent
-import com.fanhl.dreamnovel.square.component.DaggerContainerComponent
-import com.fanhl.dreamnovel.square.model.ShoppingCartModel
-import com.fanhl.dreamnovel.square.model.UserModel
-import com.fanhl.dreamnovel.square.module.ActivityModule
-import com.fanhl.dreamnovel.square.module.ContainerModule
+import com.fanhl.dreamnovel.square.component.DaggerSquareServiceComponent
+import com.fanhl.dreamnovel.square.module.SquareServiceModule
 import com.fanhl.dreamnovel.square.provider.Recommend
-import io.reactivex.BackpressureStrategy
-import io.reactivex.Flowable
+import com.fanhl.dreamnovel.square.service.GithubService
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
@@ -30,23 +25,24 @@ import javax.inject.Inject
  * @author fanhl
  */
 class SquareFragment : BaseFragment() {
-    @Inject
-    lateinit var userModel: UserModel
-    @Inject
-    lateinit var cartModel: ShoppingCartModel
-
 //    @Inject
-//    lateinit var githubServce: GithubService
+//    lateinit var userModel: UserModel
+//    @Inject
+//    lateinit var cartModel: ShoppingCartModel
+
+    @Inject
+    lateinit var githubService: GithubService
 
     private val adapter by lazy {
         SquareAdapter()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        val mActivityComponent = DaggerActivityComponent.builder().activityModule(ActivityModule()).build()
-        val containerComponent = DaggerContainerComponent.builder().activityComponent(mActivityComponent).containerModule(ContainerModule()).build()
-        containerComponent?.inject(this)
+//        val mActivityComponent = DaggerActivityComponent.builder().activityModule(ActivityModule()).build()
+//        val containerComponent = DaggerContainerComponent.builder().activityComponent(mActivityComponent).containerModule(ContainerModule()).build()
+//        containerComponent?.inject(this)
 
+        DaggerSquareServiceComponent.builder().squareServiceModule(SquareServiceModule()).build().inject(this)
 
         return inflater.inflate(R.layout.fragment_square, container, false)!!
     }
@@ -82,33 +78,38 @@ class SquareFragment : BaseFragment() {
             )
             .autoDispose(DISPOSABLE_SQUARE_LIST)
 
-//        NetClient.get<SquareService>()
-//            .list()
-//            .subscribeOn(Schedulers.io())
-//            .observeOn(AndroidSchedulers.mainThread())
-//            .subscribeByNext {
-//                toast("测试 list")
-//            }
-//            .autoDispose()
-
-        Flowable
-            .create<String>({
-                Thread.sleep(3000)
-                it.onNext(userModel.testMethod())
-                Thread.sleep(3000)
-                it.onNext(cartModel.testMethod())
-            }, BackpressureStrategy.LATEST)
+        githubService
+            .getRoot()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(
-                onNext = {
-                    toast(it)
+                onSuccess = {
+                    toast(it?.toString() ?: "error")
                 },
                 onError = {
                     toast(it.message ?: "error")
                 }
             )
             .autoDispose()
+
+//        Flowable
+//            .create<String>({
+//                Thread.sleep(3000)
+//                it.onNext(userModel.testMethod())
+//                Thread.sleep(3000)
+//                it.onNext(cartModel.testMethod())
+//            }, BackpressureStrategy.LATEST)
+//            .subscribeOn(Schedulers.io())
+//            .observeOn(AndroidSchedulers.mainThread())
+//            .subscribeBy(
+//                onNext = {
+//                    toast(it)
+//                },
+//                onError = {
+//                    toast(it.message ?: "error")
+//                }
+//            )
+//            .autoDispose()
     }
 
     companion object {
