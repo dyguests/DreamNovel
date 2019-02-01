@@ -2,6 +2,7 @@ package com.fanhl.dreamnovel.square.module
 
 import com.fanhl.dreamnovel.net.NetClient
 import com.fanhl.dreamnovel.square.service.GithubService
+import com.fanhl.dreamnovel.square.service.SquareService
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -14,4 +15,8 @@ class SquareServiceModule {
     @Provides
     @Singleton
     internal fun provideGithubService() = NetClient.get<GithubService>()
+
+    @Provides
+    @Singleton
+    internal fun provideSquareService() = NetClient.get<SquareService>()
 }
