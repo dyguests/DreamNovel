@@ -4,7 +4,7 @@ import com.fanhl.dreamnovel.square.SquareFragment
 import com.fanhl.dreamnovel.square.module.SquareServiceModule
 import dagger.Component
 
-@Component(modules = [SquareServiceModule::class])
+@Component(dependencies = [ContainerComponent::class], modules = [SquareServiceModule::class])
 interface SquareServiceComponent {
     fun inject(squareFragment: SquareFragment)
 }

@@ -5,8 +5,8 @@ import com.fanhl.dreamnovel.square.module.ActivityModule
 import dagger.Component
 
 
-//@Component(modules = [ActivityModule::class])
+@Component(modules = [ActivityModule::class])
 interface ActivityComponent {
-    //    fun inject(fragment: SquareFragment)
+//        fun inject(fragment: SquareFragment)
     fun userModel(): UserModel
 }

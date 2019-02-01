@@ -5,9 +5,9 @@ import dagger.Module
 import dagger.Provides
 
 @Deprecated("测试用")
-//@Module
+@Module
 class ContainerModule {
-//    @Provides
+    @Provides
     internal fun provideCartModel(): ShoppingCartModel {
         return ShoppingCartModel()
     }
