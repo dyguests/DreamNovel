@@ -8,6 +8,7 @@ import com.fanhl.dreamnovel.base.BaseFragment
 import com.fanhl.dreamnovel.square.adapter.SquareAdapter
 import com.fanhl.dreamnovel.square.component.DaggerActivityComponent
 import com.fanhl.dreamnovel.square.component.DaggerContainerComponent
+import com.fanhl.dreamnovel.square.component.DaggerSquareFragmentComponent
 import com.fanhl.dreamnovel.square.component.DaggerSquareServiceComponent
 import com.fanhl.dreamnovel.square.provider.Recommend
 import com.fanhl.dreamnovel.square.service.GithubService
@@ -41,9 +42,13 @@ class SquareFragment : BaseFragment() {
             .activityComponent(activityComponent)
             .build()
 
-        DaggerSquareServiceComponent.builder()
+        val squareServiceComponent = DaggerSquareServiceComponent.builder()
             .activityComponent(activityComponent)
             .containerComponent(containerComponent)
+            .build()
+
+        DaggerSquareFragmentComponent.builder()
+            .squareServiceComponent(squareServiceComponent)
             .build()
             .inject(this)
 
