@@ -4,6 +4,7 @@ import com.fanhl.dreamnovel.net.NetClient
 import com.fanhl.dreamnovel.square.service.GithubService
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 
 /**
  * 用来提供广场相关网络请求的Service
@@ -11,5 +12,6 @@ import dagger.Provides
 @Module
 class SquareServiceModule {
     @Provides
-    internal fun provideGithubService(): GithubService = NetClient.get<GithubService>()
+    @Singleton
+    internal fun provideGithubService() = NetClient.get<GithubService>()
 }
