@@ -7,13 +7,16 @@ import android.view.ViewGroup
 import com.fanhl.dreamnovel.base.BaseFragment
 import com.fanhl.dreamnovel.base.util.toast
 import com.fanhl.dreamnovel.square.adapter.SquareAdapter
-import com.fanhl.dreamnovel.square.component.ActivityComponent
 import com.fanhl.dreamnovel.square.component.DaggerActivityComponent
+import com.fanhl.dreamnovel.square.component.DaggerContainerComponent
+import com.fanhl.dreamnovel.square.model.ShoppingCartModel
 import com.fanhl.dreamnovel.square.model.UserModel
 import com.fanhl.dreamnovel.square.module.ActivityModule
+import com.fanhl.dreamnovel.square.module.ContainerModule
 import com.fanhl.dreamnovel.square.provider.Recommend
+import io.reactivex.BackpressureStrategy
+import io.reactivex.Flowable
 import io.reactivex.Observable
-import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
@@ -27,18 +30,19 @@ import javax.inject.Inject
  * @author fanhl
  */
 class SquareFragment : BaseFragment() {
-    private var mActivityComponent: ActivityComponent? = null
-
     @Inject
     lateinit var userModel: UserModel
+    @Inject
+    lateinit var cartModel: ShoppingCartModel
 
     private val adapter by lazy {
         SquareAdapter()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        mActivityComponent = DaggerActivityComponent.builder().activityModule(ActivityModule()).build()
-        mActivityComponent?.inject(this)
+        val mActivityComponent = DaggerActivityComponent.builder().activityModule(ActivityModule()).build()
+        val containerComponent = DaggerContainerComponent.builder().activityComponent(mActivityComponent).containerModule(ContainerModule()).build()
+        containerComponent?.inject(this)
         return inflater.inflate(R.layout.fragment_square, container, false)!!
     }
 
@@ -82,15 +86,17 @@ class SquareFragment : BaseFragment() {
 //            }
 //            .autoDispose()
 
-        Single
-            .create<String> {
-                Thread.sleep(2000)
-                it.onSuccess(userModel.testMethod())
-            }
+        Flowable
+            .create<String>({
+                Thread.sleep(3000)
+                it.onNext(userModel.testMethod())
+                Thread.sleep(3000)
+                it.onNext(cartModel.testMethod())
+            }, BackpressureStrategy.LATEST)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(
-                onSuccess = {
+                onNext = {
                     toast(it)
                 },
                 onError = {
