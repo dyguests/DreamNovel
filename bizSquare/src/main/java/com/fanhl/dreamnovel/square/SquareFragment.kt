@@ -16,7 +16,6 @@ import com.fanhl.dreamnovel.square.provider.Recommend
 import com.fanhl.dreamnovel.square.service.GithubService
 import io.reactivex.BackpressureStrategy
 import io.reactivex.Flowable
-import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
@@ -38,9 +37,7 @@ class SquareFragment : BaseFragment() {
     @Inject
     lateinit var githubService: GithubService
 
-    private val adapter by lazy {
-        SquareAdapter()
-    }
+    private val adapter by lazy { SquareAdapter() }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val activityComponent = DaggerActivityComponent.builder().build()
@@ -71,15 +68,18 @@ class SquareFragment : BaseFragment() {
 
     private fun refreshData() {
         removeDispose(DISPOSABLE_SQUARE_LIST)
-        Observable
-            .create<List<Recommend>> {
-                Thread.sleep(1000)
-                it.onNext(List(10) { Recommend() })
+        githubService
+            .getRoot()
+            .map {
+                it.toList().map {
+                    val (key, value) = it
+                    Recommend(key, value)
+                }
             }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(
-                onNext = {
+                onSuccess = {
                     swipe_refresh_layout.isRefreshing = false
                     adapter.setNewData(it)
                 },
@@ -88,20 +88,6 @@ class SquareFragment : BaseFragment() {
                 }
             )
             .autoDispose(DISPOSABLE_SQUARE_LIST)
-
-        githubService
-            .getRoot()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribeBy(
-                onSuccess = {
-                    toast(it?.toString() ?: "error")
-                },
-                onError = {
-                    toast(it.message ?: "error")
-                }
-            )
-            .autoDispose()
 
         Flowable
             .create<String>({
