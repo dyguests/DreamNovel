@@ -14,6 +14,7 @@ import com.fanhl.dreamnovel.square.model.UserModel
 import com.fanhl.dreamnovel.square.module.ActivityModule
 import com.fanhl.dreamnovel.square.module.ContainerModule
 import com.fanhl.dreamnovel.square.provider.Recommend
+import com.fanhl.dreamnovel.square.service.GithubService
 import io.reactivex.BackpressureStrategy
 import io.reactivex.Flowable
 import io.reactivex.Observable
@@ -34,6 +35,9 @@ class SquareFragment : BaseFragment() {
     lateinit var userModel: UserModel
     @Inject
     lateinit var cartModel: ShoppingCartModel
+
+    @Inject
+    lateinit var githubServce: GithubService
 
     private val adapter by lazy {
         SquareAdapter()
