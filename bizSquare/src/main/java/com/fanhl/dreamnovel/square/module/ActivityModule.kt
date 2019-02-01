@@ -4,6 +4,7 @@ import com.fanhl.dreamnovel.square.model.UserModel
 import dagger.Module
 import dagger.Provides
 
+@Deprecated("测试用")
 @Module
 class ActivityModule {
     @Provides
