@@ -41,7 +41,7 @@ dependencies {
     implementation "org.jetbrains.anko:anko:$anko_version"
     implementation 'com.alibaba:arouter-api:1.4.1'
     kapt 'com.alibaba:arouter-compiler:1.2.2'
-    implementation project(':bizHome')
+    implementation project(':bizMain')
     implementation project(':bizWriting')
     implementation project(':tlDatabase')
     implementation 'androidx.room:room-runtime:2.1.0-alpha04'
