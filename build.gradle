@@ -2,20 +2,27 @@
 
 buildscript {
     ext {
+
+        // ---------- dependencies start ------------
+
         androidx_test_runner_version = '1.1.1'
         anko_version = '0.10.5'
         appcompat_version = '1.1.0-alpha01'
         arouter_api_version = '1.4.1'
         arouter_compiler_version = '1.2.2'
+        brvah_version = '2.9.46'
+        cardview_version = '1.0.0'
         constraintlayout_version = '2.0.0-alpha3'
         dagger_version = '2.0.2'
         dagger_compiler_version = dagger_version
         espresso_core_version = '3.1.1'
-        glide_extensions = '4.5.0'
+        glide_version = '4.5.0'
         javax_annotation_version = '10.0-b28'
         junit_version = '4.12'
         kotlin_version = '1.2.71'
         lifecycle_extensions = '2.0.0'
+        material_extensions = '1.1.0-alpha03'
+        recyclerview_version = '1.0.0'
         retrofit_version = '2.5.0'
         room_version = '2.1.0-alpha04'
         room_runtime_version = room_version
@@ -25,6 +32,8 @@ buildscript {
         rxandroid_version = '2.1.0'
         rxkotlin_version = '2.3.0'
         statusbarutil_version = '1.5.1'
+
+        // ---------- dependencies end ------------
     }
     repositories {
         google()
