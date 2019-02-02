@@ -11,9 +11,11 @@ buildscript {
         dagger_version = '2.0.2'
         dagger_compiler_version = dagger_version
         espresso_core_version = '3.1.1'
+        glide_extensions = '4.5.0'
         javax_annotation_version = '10.0-b28'
         junit_version = '4.12'
         kotlin_version = '1.2.71'
+        lifecycle_extensions = '2.0.0'
         retrofit_version = '2.5.0'
         room_version = '2.1.0-alpha04'
         room_runtime_version = room_version
@@ -22,6 +24,7 @@ buildscript {
         rxjava_version = '2.2.5'
         rxandroid_version = '2.1.0'
         rxkotlin_version = '2.3.0'
+        statusbarutil_version = '1.5.1'
     }
     repositories {
         google()
