@@ -2,8 +2,26 @@
 
 buildscript {
     ext {
-        kotlin_version = '1.2.71'
+        androidx_test_runner_version = '1.1.1'
         anko_version = '0.10.5'
+        appcompat_version = '1.1.0-alpha01'
+        arouter_api_version = '1.4.1'
+        arouter_compiler_version = '1.2.2'
+        constraintlayout_version = '2.0.0-alpha3'
+        dagger_version = '2.0.2'
+        dagger_compiler_version = dagger_version
+        espresso_core_version = '3.1.1'
+        javax_annotation_version = '10.0-b28'
+        junit_version = '4.12'
+        kotlin_version = '1.2.71'
+        retrofit_version = '2.5.0'
+        room_version = '2.1.0-alpha04'
+        room_runtime_version = room_version
+        room_compiler_version = room_version
+        room_rxjava2_version = room_version
+        rxjava_version = '2.2.5'
+        rxandroid_version = '2.1.0'
+        rxkotlin_version = '2.3.0'
     }
     repositories {
         google()
