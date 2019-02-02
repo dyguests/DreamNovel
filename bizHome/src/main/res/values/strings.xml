@@ -1,5 +1,4 @@
 <resources>
-    <string name="title_activity_main">MainActivity</string>
     <string name="title_square">Square</string>
     <string name="title_bookshelf">Bookshelf</string>
 </resources>

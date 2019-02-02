@@ -1,4 +1,4 @@
-package com.fanhl.dreamnovel.bizhome
+package com.fanhl.dreamnovel.main
 
 import android.os.Bundle
 import androidx.fragment.app.FragmentStatePagerAdapter
@@ -6,6 +6,7 @@ import androidx.viewpager.widget.ViewPager
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.fanhl.dreamnovel.base.ARouters
 import com.fanhl.dreamnovel.base.BaseActivity
+import com.fanhl.dreamnovel.bizhome.R
 import com.fanhl.dreamnovel.bookshelf.BookshelfFragment
 import com.fanhl.dreamnovel.square.SquareFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView

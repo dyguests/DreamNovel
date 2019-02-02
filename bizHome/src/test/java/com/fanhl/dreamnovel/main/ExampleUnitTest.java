@@ -1,4 +1,4 @@
-package com.fanhl.dreamnovel.bizhome;
+package com.fanhl.dreamnovel.main;
 
 import org.junit.Test;
 
